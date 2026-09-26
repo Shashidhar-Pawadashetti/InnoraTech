@@ -14,13 +14,13 @@ export function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Headlines & Call to Actions */}
           <div className="lg:col-span-7 space-y-6 sm:space-y-8 text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0C3CD4]/10 border border-[#0C3CD4]/20 text-[#0C3CD4] text-xs font-semibold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0C34C5]/10 border border-[#0C34C5]/20 text-[#0C34C5] text-xs font-semibold uppercase tracking-wider">
               <span>Business Technology Solutions</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.1]">
               Turn Manual Work{" "}
-              <span className="text-[#0C3CD4]">Into Digital Solutions.</span>
+              <span className="text-[#0C34C5]">Into Digital Solutions.</span>
             </h1>
 
             <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl">
@@ -43,15 +43,15 @@ export function HeroSection() {
 
             <div className="pt-4 flex flex-wrap items-center gap-6 text-xs sm:text-sm text-slate-600 font-medium">
               <div className="flex items-center gap-1.5">
-                <CheckCircle className="w-4 h-4 text-[#0C3CD4]" />
+                <CheckCircle className="w-4 h-4 text-[#0C34C5]" />
                 <span>Zero-Commission Models</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircle className="w-4 h-4 text-[#0C3CD4]" />
+                <CheckCircle className="w-4 h-4 text-[#0C34C5]" />
                 <span>Modern Serverless Speed</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircle className="w-4 h-4 text-[#0C3CD4]" />
+                <CheckCircle className="w-4 h-4 text-[#0C34C5]" />
                 <span>End-to-End Ownership</span>
               </div>
             </div>
@@ -95,9 +95,9 @@ export function HeroSection() {
                 </div>
 
                 {/* Stage 2: INNORATECH Engine */}
-                <div className="p-3.5 rounded-xl bg-[#0C3CD4]/20 border border-[#0C3CD4]/60 flex items-center justify-between ring-1 ring-[#0C3CD4]/30">
+                <div className="p-3.5 rounded-xl bg-[#0C34C5]/20 border border-[#0C34C5]/60 flex items-center justify-between ring-1 ring-[#0C34C5]/30">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-[#0C3CD4] flex items-center justify-center text-white text-xs font-bold">
+                    <div className="w-8 h-8 rounded-lg bg-[#0C34C5] flex items-center justify-center text-white text-xs font-bold">
                       <Zap className="w-4 h-4" />
                     </div>
                     <div>

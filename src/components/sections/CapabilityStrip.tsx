@@ -20,7 +20,7 @@ export function CapabilityStrip() {
                 {item}
               </span>
               {idx < capabilities.length - 1 && (
-                <span className="text-[#0C3CD4] select-none">•</span>
+                <span className="text-[#0C34C5] select-none">•</span>
               )}
             </React.Fragment>
           ))}

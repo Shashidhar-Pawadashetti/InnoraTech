@@ -18,7 +18,7 @@ export default function ContactPage() {
           {/* Left Column: Context & Direct Founder Channels */}
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0C3CD4]">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#0C34C5]">
                 Inquiries & Partnerships
               </span>
               <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
@@ -34,7 +34,7 @@ export default function ContactPage() {
             {/* Direct Contact Cards */}
             <div className="space-y-4 pt-4 border-t border-slate-100">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-[#0C3CD4]/10 text-[#0C3CD4] flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-[#0C34C5]/10 text-[#0C34C5] flex items-center justify-center shrink-0">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>

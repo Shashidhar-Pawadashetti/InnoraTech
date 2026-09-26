@@ -47,7 +47,7 @@ export function WhyINNORATECHSection() {
             const Icon = item.icon;
             return (
               <Card key={idx} hoverable className="h-full">
-                <div className="w-12 h-12 rounded-xl bg-[#0C3CD4]/10 text-[#0C3CD4] flex items-center justify-center mb-6">
+                <div className="w-12 h-12 rounded-xl bg-[#0C34C5]/10 text-[#0C34C5] flex items-center justify-center mb-6">
                   <Icon className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">

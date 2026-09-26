@@ -27,10 +27,10 @@ export default function ProcessPage() {
             {processSteps.map((step) => (
               <div
                 key={step.number}
-                className="flex flex-col md:flex-row gap-6 p-8 rounded-2xl border border-slate-200 bg-white hover:border-[#0C3CD4] transition-all shadow-sm"
+                className="flex flex-col md:flex-row gap-6 p-8 rounded-2xl border border-slate-200 bg-white hover:border-[#0C34C5] transition-all shadow-sm"
               >
                 <div className="shrink-0 flex items-center md:items-start">
-                  <span className="w-14 h-14 rounded-2xl bg-[#0C3CD4]/10 text-[#0C3CD4] font-black text-2xl flex items-center justify-center">
+                  <span className="w-14 h-14 rounded-2xl bg-[#0C34C5]/10 text-[#0C34C5] font-black text-2xl flex items-center justify-center">
                     {step.number}
                   </span>
                 </div>
@@ -49,7 +49,7 @@ export default function ProcessPage() {
                   <p className="text-sm text-slate-600 leading-relaxed">
                     {step.description}
                   </p>
-                  <div className="pt-3 border-t border-slate-100 flex items-center gap-2 text-xs font-semibold text-[#0C3CD4]">
+                  <div className="pt-3 border-t border-slate-100 flex items-center gap-2 text-xs font-semibold text-[#0C34C5]">
                     <CheckCircle2 className="w-4 h-4" />
                     <span>Tangible Deliverable: {step.output}</span>
                   </div>

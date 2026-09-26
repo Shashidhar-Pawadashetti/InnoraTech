@@ -18,10 +18,10 @@ export function ProcessSection() {
           {processSteps.map((step) => (
             <div
               key={step.number}
-              className="rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:border-[#0C3CD4] hover:shadow-md"
+              className="rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:border-[#0C34C5] hover:shadow-md"
             >
               <div className="flex items-center justify-between mb-4">
-                <span className="text-2xl font-black text-[#0C3CD4]">
+                <span className="text-2xl font-black text-[#0C34C5]">
                   {step.number}
                 </span>
                 <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
@@ -37,7 +37,7 @@ export function ProcessSection() {
               <p className="text-xs text-slate-500 leading-relaxed mb-4">
                 {step.description}
               </p>
-              <div className="pt-3 border-t border-slate-100 text-[11px] font-medium text-[#0C3CD4]">
+              <div className="pt-3 border-t border-slate-100 text-[11px] font-medium text-[#0C34C5]">
                 Deliverable: {step.output}
               </div>
             </div>

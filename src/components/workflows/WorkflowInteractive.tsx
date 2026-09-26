@@ -56,7 +56,7 @@ export function WorkflowInteractive({
               className={cn(
                 "cursor-pointer rounded-xl p-4 transition-all duration-200 border text-left",
                 isActive
-                  ? "bg-[#0C3CD4]/20 border-[#38BDF8] ring-1 ring-[#38BDF8]/40"
+                  ? "bg-[#0C34C5]/20 border-[#38BDF8] ring-1 ring-[#38BDF8]/40"
                   : "bg-slate-800/40 border-slate-800 hover:bg-slate-800/70 hover:border-slate-700"
               )}
             >
@@ -65,7 +65,7 @@ export function WorkflowInteractive({
                   className={cn(
                     "text-xs font-bold px-2 py-0.5 rounded",
                     isActive
-                      ? "bg-[#0C3CD4] text-white"
+                      ? "bg-[#0C34C5] text-white"
                       : "bg-slate-800 text-slate-400"
                   )}
                 >

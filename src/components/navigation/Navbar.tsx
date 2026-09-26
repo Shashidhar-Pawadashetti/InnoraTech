@@ -24,8 +24,8 @@ export function Navbar() {
             <Image
               src="/brand/logo.svg"
               alt="INNORATECH"
-              width={140}
-              height={34}
+              width={147}
+              height={32}
               priority
               className="h-8 w-auto"
             />
@@ -37,7 +37,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-slate-600 hover:text-[#0C3CD4] transition-colors"
+                className="text-sm font-medium text-slate-600 hover:text-[#0C34C5] transition-colors"
               >
                 {link.label}
               </Link>

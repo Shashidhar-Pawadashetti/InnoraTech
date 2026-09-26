@@ -12,10 +12,10 @@ export function ServiceCard({ service }: ServiceCardProps) {
   return (
     <Card hoverable className="flex flex-col justify-between h-full group">
       <div>
-        <span className="text-3xl font-black text-slate-200 group-hover:text-[#0C3CD4]/30 transition-colors block mb-4">
+        <span className="text-3xl font-black text-slate-200 group-hover:text-[#0C34C5]/30 transition-colors block mb-4">
           {service.number}
         </span>
-        <h3 className="text-xl font-bold text-slate-900 group-hover:text-[#0C3CD4] transition-colors mb-2">
+        <h3 className="text-xl font-bold text-slate-900 group-hover:text-[#0C34C5] transition-colors mb-2">
           {service.title}
         </h3>
         <p className="text-sm font-medium text-slate-700 mb-3">
@@ -29,7 +29,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
       <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
         <Link
           href={`/services`}
-          className="inline-flex items-center text-sm font-semibold text-[#0C3CD4] group-hover:text-[#082FA8] gap-1.5"
+          className="inline-flex items-center text-sm font-semibold text-[#0C34C5] group-hover:text-[#09289E] gap-1.5"
         >
           View Details{" "}
           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

@@ -16,8 +16,8 @@ export function Footer() {
               <Image
                 src="/brand/logo-dark.svg"
                 alt="INNORATECH"
-                width={140}
-                height={34}
+                width={147}
+                height={32}
                 className="h-8 w-auto"
               />
             </Link>

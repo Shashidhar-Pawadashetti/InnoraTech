@@ -1,11 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 100" fill="none">
-  <!-- Mark -->
-  <g transform="translate(10, 10) scale(0.8)">
-    <g transform="rotate(45 50 50)">
-      <path d="M42 22 H78 V58 H64 V36 H42 Z" fill="#0C3CD4"/>
-      <path d="M58 78 H22 V42 H36 V64 H58 Z" fill="#0C3CD4"/>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 96" fill="none">
+  <!-- INNORATECH Official Logo (Vector Mark + Wordmark) -->
+  <g id="brand-mark">
+    <path d="M 58 17 L 87 58 L 74 68 L 54 41 L 36 45 L 31 37 Z" fill="#0C34C5" />
+    <path d="M 36 79 L 6 39 L 19 28 L 39 55 L 57 47 L 62 59 Z" fill="#0C34C5" />
   </g>
-  <!-- Text -->
-  <text x="105" y="68" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif" font-size="56" font-weight="700" fill="#0C3CD4" letter-spacing="-1.5">Innoratech</text>
+  <text x="114" y="69" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="64" font-weight="700" fill="#0C34C5" letter-spacing="-1.5">Innoratech</text>
 </svg>

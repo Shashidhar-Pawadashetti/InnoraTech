@@ -154,7 +154,7 @@ export function LeadForm() {
       {/* Step 1: About You */}
       <div className="space-y-4">
         <div className="border-b border-slate-100 pb-2">
-          <span className="text-xs font-bold text-[#0C3CD4] uppercase tracking-wider">
+          <span className="text-xs font-bold text-[#0C34C5] uppercase tracking-wider">
             Step 1
           </span>
           <h4 className="text-lg font-bold text-slate-900">Contact Information</h4>
@@ -241,7 +241,7 @@ export function LeadForm() {
                       preferredContactMethod: e.target.value,
                     })
                   }
-                  className="text-[#0C3CD4] focus:ring-[#0C3CD4]"
+                  className="text-[#0C34C5] focus:ring-[#0C34C5]"
                 />
                 <span>{method}</span>
               </label>
@@ -253,7 +253,7 @@ export function LeadForm() {
       {/* Step 2: About the Project */}
       <div className="space-y-4">
         <div className="border-b border-slate-100 pb-2">
-          <span className="text-xs font-bold text-[#0C3CD4] uppercase tracking-wider">
+          <span className="text-xs font-bold text-[#0C34C5] uppercase tracking-wider">
             Step 2
           </span>
           <h4 className="text-lg font-bold text-slate-900">Project Requirements</h4>
@@ -295,7 +295,7 @@ export function LeadForm() {
                   onClick={() => toggleService(svc)}
                   className={`text-xs font-medium px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
                     selected
-                      ? "bg-[#0C3CD4] text-white border-[#0C3CD4] shadow-sm"
+                      ? "bg-[#0C34C5] text-white border-[#0C34C5] shadow-sm"
                       : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
                   }`}
                 >
@@ -325,7 +325,7 @@ export function LeadForm() {
       {/* Step 3: Additional Information */}
       <div className="space-y-4">
         <div className="border-b border-slate-100 pb-2">
-          <span className="text-xs font-bold text-[#0C3CD4] uppercase tracking-wider">
+          <span className="text-xs font-bold text-[#0C34C5] uppercase tracking-wider">
             Step 3
           </span>
           <h4 className="text-lg font-bold text-slate-900">Optional Details</h4>

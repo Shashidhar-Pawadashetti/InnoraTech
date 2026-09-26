@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  /* Brand Tokens - Sampled from INNORATECH Logo */
-  --brand-primary: #0C3CD4;
-  --brand-primary-hover: #082FA8;
-  --brand-primary-subtle: #EBF1FF;
-  --brand-primary-glow: rgba(12, 60, 212, 0.15);
+  /* Brand Tokens - Sampled from official INNORATECH Logo */
+  --brand-primary: #0C34C5;
+  --brand-primary-hover: #09289E;
+  --brand-primary-subtle: #EEF2FF;
+  --brand-primary-glow: rgba(12, 52, 197, 0.15);
 
   /* Typography / Text */
   --text-primary: #0F172A;
@@ -22,7 +22,7 @@
 
   /* Borders */
   --border: #E2E8F0;
-  --border-focus: #0C3CD4;
+  --border-focus: #0C34C5;
   --border-dark: #1E293B;
 
   /* Status Colors (Functional) */

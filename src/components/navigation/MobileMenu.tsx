@@ -34,7 +34,7 @@ export function MobileMenu({ navLinks }: MobileMenuProps) {
                 key={link.href}
                 href={link.href}
                 onClick={close}
-                className="text-base font-medium text-slate-800 hover:text-[#0C3CD4] py-1 transition-colors"
+                className="text-base font-medium text-slate-800 hover:text-[#0C34C5] py-1 transition-colors"
               >
                 {link.label}
               </Link>

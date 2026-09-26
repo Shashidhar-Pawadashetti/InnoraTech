@@ -50,7 +50,7 @@ export default function AboutPage() {
           {/* Mission & Vision */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
             <Card className="p-8 border-slate-200">
-              <div className="w-12 h-12 rounded-xl bg-[#0C3CD4]/10 text-[#0C3CD4] flex items-center justify-center mb-6">
+              <div className="w-12 h-12 rounded-xl bg-[#0C34C5]/10 text-[#0C34C5] flex items-center justify-center mb-6">
                 <Compass className="w-6 h-6" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3">
@@ -64,7 +64,7 @@ export default function AboutPage() {
             </Card>
 
             <Card className="p-8 border-slate-200">
-              <div className="w-12 h-12 rounded-xl bg-[#0C3CD4]/10 text-[#0C3CD4] flex items-center justify-center mb-6">
+              <div className="w-12 h-12 rounded-xl bg-[#0C34C5]/10 text-[#0C34C5] flex items-center justify-center mb-6">
                 <Eye className="w-6 h-6" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3">
@@ -89,7 +89,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {founders.map((member, idx) => (
                 <Card key={idx} hoverable className="h-full">
-                  <div className="w-10 h-10 rounded-lg bg-slate-100 text-[#0C3CD4] font-bold text-sm flex items-center justify-center mb-4">
+                  <div className="w-10 h-10 rounded-lg bg-slate-100 text-[#0C34C5] font-bold text-sm flex items-center justify-center mb-4">
                     0{idx + 1}
                   </div>
                   <h4 className="text-lg font-bold text-slate-900 mb-2">

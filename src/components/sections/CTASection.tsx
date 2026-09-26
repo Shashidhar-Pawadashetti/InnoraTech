@@ -8,11 +8,11 @@ export function CTASection() {
   return (
     <section className="w-full bg-[#0B1220] py-20 sm:py-28 relative overflow-hidden">
       {/* Background glow accent */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#0C3CD4]/20 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#0C34C5]/20 blur-[120px] rounded-full pointer-events-none" />
 
       <Container className="relative text-center">
         <div className="max-w-3xl mx-auto space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0C3CD4]/20 border border-[#0C3CD4]/40 text-[#38BDF8] text-xs font-semibold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0C34C5]/20 border border-[#0C34C5]/40 text-[#38BDF8] text-xs font-semibold uppercase tracking-wider">
             <MessageSquareCode className="w-3.5 h-3.5" />
             <span>Ready to Eliminate Friction?</span>
           </div>
@@ -29,7 +29,7 @@ export function CTASection() {
 
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/contact" className="w-full sm:w-auto">
-              <Button size="lg" className="w-full sm:w-auto shadow-lg shadow-[#0C3CD4]/25">
+              <Button size="lg" className="w-full sm:w-auto shadow-lg shadow-[#0C34C5]/25">
                 Start a Project <ArrowRight className="w-4 h-4 ml-1.5" />
               </Button>
             </Link>

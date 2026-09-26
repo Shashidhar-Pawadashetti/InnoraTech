@@ -24,7 +24,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
 
         {/* Title & Tagline */}
-        <h3 className="text-xl font-bold text-slate-900 group-hover:text-[#0C3CD4] transition-colors mb-2">
+        <h3 className="text-xl font-bold text-slate-900 group-hover:text-[#0C34C5] transition-colors mb-2">
           {project.title}
         </h3>
         <p className="text-sm font-medium text-slate-700 mb-3">
@@ -38,7 +38,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="space-y-1.5 mb-6">
           {project.keyFeatures.slice(0, 2).map((feat, i) => (
             <div key={i} className="text-xs text-slate-600 flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0C3CD4] shrink-0" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0C34C5] shrink-0" />
               <span>{feat}</span>
             </div>
           ))}
@@ -48,7 +48,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
         <Link
           href={`/work`}
-          className="inline-flex items-center text-sm font-semibold text-[#0C3CD4] group-hover:text-[#082FA8] gap-1.5"
+          className="inline-flex items-center text-sm font-semibold text-[#0C34C5] group-hover:text-[#09289E] gap-1.5"
         >
           View Case Study{" "}
           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

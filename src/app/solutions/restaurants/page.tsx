@@ -76,8 +76,8 @@ export default function RestaurantSolutionPage() {
               </ul>
             </div>
 
-            <div className="bg-white p-8 rounded-2xl border border-[#0C3CD4]/30 shadow-sm ring-1 ring-[#0C3CD4]/20">
-              <div className="flex items-center gap-2 text-[#0C3CD4] text-sm font-semibold uppercase tracking-wider mb-4">
+            <div className="bg-white p-8 rounded-2xl border border-[#0C34C5]/30 shadow-sm ring-1 ring-[#0C34C5]/20">
+              <div className="flex items-center gap-2 text-[#0C34C5] text-sm font-semibold uppercase tracking-wider mb-4">
                 <CheckCircle2 className="w-4 h-4" />
                 <span>The INNORATECH Solution</span>
               </div>
@@ -116,9 +116,9 @@ export default function RestaurantSolutionPage() {
             {data.features.map((feat, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-2xl border border-slate-200 bg-white hover:border-[#0C3CD4] transition-all"
+                className="p-6 rounded-2xl border border-slate-200 bg-white hover:border-[#0C34C5] transition-all"
               >
-                <div className="w-9 h-9 rounded-lg bg-[#0C3CD4]/10 text-[#0C3CD4] flex items-center justify-center font-bold text-sm mb-4">
+                <div className="w-9 h-9 rounded-lg bg-[#0C34C5]/10 text-[#0C34C5] flex items-center justify-center font-bold text-sm mb-4">
                   0{idx + 1}
                 </div>
                 <h4 className="text-base font-bold text-slate-900 mb-2">{feat}</h4>

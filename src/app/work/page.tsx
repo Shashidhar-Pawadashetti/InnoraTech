@@ -39,7 +39,7 @@ export default function WorkPage() {
             {projects.map((proj) => (
               <div
                 key={proj.id}
-                className="rounded-2xl border border-slate-200 bg-white p-8 sm:p-10 shadow-sm hover:border-[#0C3CD4] transition-all"
+                className="rounded-2xl border border-slate-200 bg-white p-8 sm:p-10 shadow-sm hover:border-[#0C34C5] transition-all"
               >
                 <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
                   <div className="flex items-center gap-3">
@@ -84,7 +84,7 @@ export default function WorkPage() {
                     </p>
                   </div>
                   <div className="p-5 rounded-xl bg-blue-50/50 border border-blue-200/60">
-                    <p className="font-bold text-[#0C3CD4] mb-2">INNORATECH Solution</p>
+                    <p className="font-bold text-[#0C34C5] mb-2">INNORATECH Solution</p>
                     <p className="text-xs text-slate-700 leading-relaxed">
                       {proj.solution}
                     </p>
