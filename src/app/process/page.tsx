@@ -10,6 +10,16 @@ export const metadata: Metadata = {
   title: "Delivery Process",
   description:
     "How INNORATECH works: from operational discovery to architecture, design, build, QA, and post-launch support.",
+  alternates: {
+    canonical: "/process",
+  },
+  openGraph: {
+    title: "Delivery Process | INNORATECH",
+    description:
+      "Our disciplined 7-step engineering methodology from operational problem to working digital system.",
+    url: "/process",
+    images: ["/og/innoratech-default.png"],
+  },
 };
 
 export default function ProcessPage() {

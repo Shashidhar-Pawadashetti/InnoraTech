@@ -10,6 +10,16 @@ export const metadata: Metadata = {
   title: "About Us",
   description:
     "INNORATECH is a four-member technology agency helping businesses replace manual operations with modern websites, applications, and digital automation.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About Us | INNORATECH",
+    description:
+      "A four-member technology agency helping businesses replace manual operations with modern digital systems.",
+    url: "/about",
+    images: ["/og/innoratech-default.png"],
+  },
 };
 
 export default function AboutPage() {

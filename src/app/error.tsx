@@ -1,9 +1,8 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
 import { AlertTriangle, RefreshCcw, Home } from "lucide-react";
-import { Container } from "@/components/ui/Container";
+import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 
 export default function GlobalError({
@@ -14,7 +13,8 @@ export default function GlobalError({
   reset: () => void;
 }) {
   React.useEffect(() => {
-    console.error("[APPLICATION_ERROR]", error);
+    // Log exception safely without exposing internal details in the UI
+    console.error("[APPLICATION_ERROR]", error?.message || "Internal client exception");
   }, [error]);
 
   return (
@@ -23,22 +23,19 @@ export default function GlobalError({
         <div className="w-14 h-14 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center mx-auto">
           <AlertTriangle className="w-7 h-7" />
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-          System Recovery
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight">
+          Something went wrong.
         </h1>
-        <p className="text-sm text-slate-600 max-w-md mx-auto">
-          An unexpected interface exception occurred. The incident has been
-          logged for engineering review.
+        <p className="text-base text-[var(--text-secondary)] max-w-md mx-auto">
+          An unexpected error occurred while loading this page. Our team has been notified.
         </p>
         <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button onClick={() => reset()}>
-            <RefreshCcw className="w-4 h-4 mr-1.5" /> Try Again
+            <RefreshCcw className="w-4 h-4 mr-2" /> Try Again
           </Button>
-          <Link href="/">
-            <Button variant="outline">
-              <Home className="w-4 h-4 mr-1.5" /> Return Home
-            </Button>
-          </Link>
+          <Button href="/" variant="secondary">
+            <Home className="w-4 h-4 mr-2" /> Back to Home
+          </Button>
         </div>
       </Container>
     </div>

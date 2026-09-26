@@ -24,16 +24,42 @@ export async function generateMetadata({
 
   if (!project) {
     return {
-      title: "Project Not Found | INNORATECH",
+      title: "Project Not Found",
     };
   }
 
+  const ogImagesMap: Record<string, string> = {
+    "restaurant-digital-ordering": "/og/restaurants.png",
+    "hotel-direct-booking": "/og/hotels.png",
+    "bakery-order-automation": "/og/work-default.png",
+  };
+
+  const ogImage = ogImagesMap[slug] || "/og/work-default.png";
+
   return {
-    title: `${project.title} (${project.label}) | INNORATECH`,
+    title: `${project.title} (${project.label})`,
     description: project.description,
+    alternates: {
+      canonical: `/work/${slug}`,
+    },
     openGraph: {
       title: `${project.title} | INNORATECH`,
       description: project.description,
+      url: `/work/${slug}`,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: `${project.title} — INNORATECH`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} | INNORATECH`,
+      description: project.description,
+      images: [ogImage],
     },
   };
 }

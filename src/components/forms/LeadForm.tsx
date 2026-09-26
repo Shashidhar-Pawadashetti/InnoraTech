@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/Textarea";
 import { FormField } from "./FormField";
 import { businessTypes, serviceInterests } from "@/types/lead";
 import { leadSchema } from "@/lib/lead-validation";
+import { trackEvent, getAttribution } from "@/lib/analytics";
 
 export function LeadForm() {
   const [formData, setFormData] = React.useState({
@@ -31,12 +32,9 @@ export function LeadForm() {
 
   // Track form open event on mount
   React.useEffect(() => {
-    if (typeof window !== "undefined" && (window as unknown as { va?: (type: string, data: object) => void }).va) {
-      (window as unknown as { va: (type: string, data: object) => void }).va("event", {
-        name: "contact_form_open",
-        sourcePage: window.location.pathname,
-      });
-    }
+    trackEvent("contact_form_open", {
+      sourcePage: typeof window !== "undefined" ? window.location.pathname : "/contact",
+    });
   }, []);
 
   const handleChange = (
@@ -56,19 +54,19 @@ export function LeadForm() {
     setFieldErrors({});
 
     // Track submit attempt
-    if (typeof window !== "undefined" && (window as unknown as { va?: (type: string, data: object) => void }).va) {
-      (window as unknown as { va: (type: string, data: object) => void }).va("event", {
-        name: "contact_form_submit",
-      });
-    }
+    trackEvent("contact_form_submit", {
+      businessType: formData.businessType,
+      serviceInterest: formData.serviceInterest,
+    });
 
-    // Capture dynamic browser attribution on submit
+    // Capture dynamic browser attribution on submit with persistent storage fallback
+    const stored = getAttribution();
     const params = typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null;
     const attribution = {
-      sourcePage: typeof window !== "undefined" ? window.location.pathname : "/contact",
-      utmSource: params?.get("utm_source") || "",
-      utmMedium: params?.get("utm_medium") || "",
-      utmCampaign: params?.get("utm_campaign") || "",
+      sourcePage: stored.sourcePage || (typeof window !== "undefined" ? window.location.pathname : "/contact"),
+      utmSource: params?.get("utm_source") || stored.utmSource || "",
+      utmMedium: params?.get("utm_medium") || stored.utmMedium || "",
+      utmCampaign: params?.get("utm_campaign") || stored.utmCampaign || "",
     };
 
     // Client-side validation for immediate feedback
@@ -108,35 +106,26 @@ export function LeadForm() {
         setStatus("success");
 
         // Fire conversion event ONLY on confirmed 201 response
-        if (typeof window !== "undefined" && (window as unknown as { va?: (type: string, data: object) => void }).va) {
-          (window as unknown as { va: (type: string, data: object) => void }).va("event", {
-            name: "contact_form_success",
-            businessType: formData.businessType,
-            serviceInterest: formData.serviceInterest,
-          });
-        }
+        trackEvent("contact_form_success", {
+          businessType: formData.businessType,
+          serviceInterest: formData.serviceInterest,
+        });
       } else {
         setStatus("error");
         setErrorMessage(data.message || "We couldn't submit your enquiry. Please try again.");
 
-        if (typeof window !== "undefined" && (window as unknown as { va?: (type: string, data: object) => void }).va) {
-          (window as unknown as { va: (type: string, data: object) => void }).va("event", {
-            name: "contact_form_error",
-            status: res.status,
-          });
-        }
+        trackEvent("contact_form_error", {
+          status: res.status,
+        });
       }
     } catch (err) {
       console.error("[FORM_SUBMIT_NETWORK_ERROR]", err);
       setStatus("error");
       setErrorMessage("Network error. Please try again or reach out directly via WhatsApp or email.");
 
-      if (typeof window !== "undefined" && (window as unknown as { va?: (type: string, data: object) => void }).va) {
-        (window as unknown as { va: (type: string, data: object) => void }).va("event", {
-          name: "contact_form_error",
-          status: "network_exception",
-        });
-      }
+      trackEvent("contact_form_error", {
+        status: "network_exception",
+      });
     }
   };
 

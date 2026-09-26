@@ -24,16 +24,39 @@ export async function generateMetadata({
 
   if (!service) {
     return {
-      title: "Service Not Found | INNORATECH",
+      title: "Service Not Found",
     };
   }
 
+  const ogImage =
+    slug === "business-automation" || slug === "api-integrations"
+      ? "/og/automation.png"
+      : "/og/innoratech-default.png";
+
   return {
-    title: `${service.title} | Technical Services | INNORATECH`,
+    title: `${service.title} | Technical Services`,
     description: service.shortDescription,
+    alternates: {
+      canonical: `/services/${slug}`,
+    },
     openGraph: {
       title: `${service.title} | INNORATECH`,
       description: service.description,
+      url: `/services/${slug}`,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: `${service.title} — INNORATECH`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${service.title} | INNORATECH`,
+      description: service.shortDescription,
+      images: [ogImage],
     },
   };
 }

@@ -6,6 +6,9 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description: "INNORATECH Terms of Service and agency engagement terms.",
+  alternates: {
+    canonical: "/terms",
+  },
 };
 
 export default function TermsPage() {

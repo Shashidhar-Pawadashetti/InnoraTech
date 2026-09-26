@@ -117,3 +117,25 @@ export async function POST(request: Request) {
     );
   }
 }
+
+export async function GET() {
+  return NextResponse.json(
+    { success: false, message: "Method Not Allowed" },
+    { status: 405, headers: { Allow: "POST" } }
+  );
+}
+
+export async function PUT() {
+  return NextResponse.json(
+    { success: false, message: "Method Not Allowed" },
+    { status: 405, headers: { Allow: "POST" } }
+  );
+}
+
+export async function DELETE() {
+  return NextResponse.json(
+    { success: false, message: "Method Not Allowed" },
+    { status: 405, headers: { Allow: "POST" } }
+  );
+}
+

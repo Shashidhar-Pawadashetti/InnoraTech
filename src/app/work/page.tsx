@@ -10,9 +10,19 @@ import { Badge } from "@/components/ui/Badge";
 import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
-  title: "Concept Demos & Projects | INNORATECH",
+  title: "Concept Demos & Projects",
   description:
     "Explore INNORATECH working concept demonstrations across restaurant ordering, hotel reservations, and bakery workflows.",
+  alternates: {
+    canonical: "/work",
+  },
+  openGraph: {
+    title: "Concept Demos & Projects | INNORATECH",
+    description:
+      "Explore INNORATECH working concept demonstrations across hospitality and retail workflows.",
+    url: "/work",
+    images: ["/og/work-default.png"],
+  },
 };
 
 export default function WorkPage() {

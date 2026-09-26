@@ -5,9 +5,19 @@ import { Section } from "@/components/layout/Section";
 import { LeadForm } from "@/components/forms/LeadForm";
 
 export const metadata: Metadata = {
-  title: "Contact & Project Inquiry | INNORATECH",
+  title: "Contact & Project Inquiry",
   description:
     "Tell us how your business currently works, what is currently manual, and what you want to improve. Receive a direct architectural proposal from our founding engineers.",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact & Project Inquiry | INNORATECH",
+    description:
+      "Start a direct discussion with our founding software engineers about digitizing your business workflow.",
+    url: "/contact",
+    images: ["/og/innoratech-default.png"],
+  },
 };
 
 export default function ContactPage() {

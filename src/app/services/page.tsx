@@ -9,9 +9,19 @@ import { Card } from "@/components/ui/Card";
 import { services } from "@/data/services";
 
 export const metadata: Metadata = {
-  title: "Core Services | INNORATECH",
+  title: "Core Services",
   description:
     "Explore INNORATECH's five technical service pillars: Business Websites, Web Applications, Business Automation, API & Integrations, and Deployment & Maintenance.",
+  alternates: {
+    canonical: "/services",
+  },
+  openGraph: {
+    title: "Core Services | INNORATECH",
+    description:
+      "Explore INNORATECH's five technical service pillars for modern businesses.",
+    url: "/services",
+    images: ["/og/automation.png"],
+  },
 };
 
 export default function ServicesPage() {

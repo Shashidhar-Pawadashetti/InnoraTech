@@ -6,6 +6,9 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "INNORATECH Privacy Policy and data governance principles.",
+  alternates: {
+    canonical: "/privacy-policy",
+  },
 };
 
 export default function PrivacyPolicyPage() {

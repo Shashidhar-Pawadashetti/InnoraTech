@@ -10,9 +10,19 @@ import { Badge } from "@/components/ui/Badge";
 import { solutions } from "@/data/solutions";
 
 export const metadata: Metadata = {
-  title: "Industry Solutions | INNORATECH",
+  title: "Industry Solutions",
   description:
     "Digital systems designed specifically for restaurants, hotels, bakeries, and custom business processes. Replace manual bottlenecks with connected digital workflows.",
+  alternates: {
+    canonical: "/solutions",
+  },
+  openGraph: {
+    title: "Industry Solutions | INNORATECH",
+    description:
+      "Digital systems designed specifically for restaurants, hotels, bakeries, and custom business processes.",
+    url: "/solutions",
+    images: ["/og/innoratech-default.png"],
+  },
 };
 
 export default function SolutionsPage() {
