@@ -1,131 +1,224 @@
-export interface SolutionItem {
-  id: string;
+export interface Solution {
   slug: string;
-  badge: string;
+  eyebrow: string;
   title: string;
-  tagline: string;
-  problemSummary: string;
-  solutionSummary: string;
-  features: string[];
-  workflowSteps: { title: string; actor: string; description: string }[];
-  impactMetrics: { label: string; value: string }[];
+  shortDescription: string;
+  description: string;
+  problems: string[];
+  capabilities: string[];
+  workflow: {
+    title: string;
+    description: string;
+  }[];
+  cta: string;
+  relatedServices?: string[];
+  relatedProjectSlug?: string;
 }
 
-export const solutions: SolutionItem[] = [
+export type SolutionItem = Solution;
+
+export const solutions: Solution[] = [
   {
-    id: "restaurants",
     slug: "restaurants",
-    badge: "Hospitality & Dining",
-    title: "Digital Systems for Modern Restaurants",
-    tagline: "Replace paper-based ordering and fragmented phone calls with connected digital workflows.",
-    problemSummary:
-      "Orders handled through phone calls, paper tickets, and high-commission 3rd-party aggregators result in kitchen delays, miscommunication, and zero customer data ownership.",
-    solutionSummary:
-      "A commission-free direct ordering portal with QR table ordering, digital menus, real-time kitchen displays, instant payments, and automated WhatsApp receipts.",
-    features: [
-      "Commission-free direct online delivery & takeaway portal",
-      "QR code contactless table menus with instant checkout",
-      "Kitchen Display System (KDS) for real-time prep tracking",
-      "Integrated UPI, cards, and automated WhatsApp receipts",
-      "Customer re-order tracking and customer database ownership",
+    eyebrow: "RESTAURANTS",
+    title: "Digital systems for modern restaurants.",
+    shortDescription:
+      "Replace paper-based ordering and fragmented ordering channels with connected digital ordering workflows.",
+    description:
+      "INNORATECH helps restaurants build direct digital ordering channels, QR table ordering, payment workflows, and restaurant-side order management.",
+    problems: [
+      "Food orders received through phone calls",
+      "Dine-in orders handled using paper and pen",
+      "Disconnected ordering channels",
+      "Manual communication between front-of-house and kitchen",
     ],
-    workflowSteps: [
-      { title: "QR Scan / Link", actor: "Customer", description: "Opens contactless live digital menu on phone" },
-      { title: "Order & Payment", actor: "Customer", description: "Selects items, customizes notes, and pays via UPI/Card" },
-      { title: "Order Routing", actor: "INNORATECH Engine", description: "Instant notification dispatched to kitchen display" },
-      { title: "Preparation & Fulfillment", actor: "Kitchen Staff", description: "Ticket prepped with zero manual phone entry" },
+    capabilities: [
+      "Restaurant website",
+      "Digital menu",
+      "Online ordering",
+      "QR table ordering",
+      "Payment integration",
+      "Order management",
+      "Kitchen workflow",
+      "Customer notifications",
     ],
-    impactMetrics: [
-      { label: "Commission Saved", value: "100%" },
-      { label: "Order Error Reduction", value: "98%" },
-      { label: "Staff Time Saved", value: "2.5 hrs/day" },
+    workflow: [
+      {
+        title: "Customer",
+        description: "Customer opens the restaurant website or scans a table QR code.",
+      },
+      {
+        title: "Digital Menu",
+        description: "Customer browses the current menu and selects items.",
+      },
+      {
+        title: "Order",
+        description: "Order is submitted with pickup, delivery, or table information.",
+      },
+      {
+        title: "Restaurant",
+        description: "Restaurant staff receive and manage the order digitally.",
+      },
+      {
+        title: "Kitchen",
+        description: "Kitchen receives the order and updates its status.",
+      },
     ],
+    cta: "Discuss Your Restaurant Workflow",
+    relatedServices: ["business-websites", "web-applications", "business-automation"],
+    relatedProjectSlug: "restaurant-digital-ordering",
   },
+
   {
-    id: "hotels",
     slug: "hotels",
-    badge: "Hospitality & Lodging",
-    title: "Direct Booking & Guest Automation for Hotels",
-    tagline: "Eliminate OTA commission leaks and manual reservation tracking across WhatsApp.",
-    problemSummary:
-      "Reservations managed through scattered phone calls, WhatsApp messages, and external OTAs lead to double-bookings, delayed check-ins, and high commission payouts.",
-    solutionSummary:
-      "A branded direct booking engine with live room calendars, secure deposit processing, automated guest pre-arrival messaging, and PMS integrations.",
-    features: [
-      "Zero-commission direct room reservation engine",
-      "Real-time room availability calendar with rate tiers",
-      "Automated WhatsApp & SMS check-in details and directions",
-      "Secure deposit collection and instant invoice dispatch",
-      "Integration-ready for PMS and accounting workflows",
+    eyebrow: "HOTELS",
+    title: "Direct booking and reservation systems for hotels.",
+    shortDescription:
+      "Move room booking from fragmented manual conversations toward a structured digital booking workflow.",
+    description:
+      "INNORATECH helps hotels build direct booking experiences with room availability, reservations, payments, and hotel-side booking management.",
+    problems: [
+      "Room bookings handled through phone calls",
+      "Reservations managed through WhatsApp",
+      "Dependence on external accommodation platforms",
+      "Manual reservation tracking",
     ],
-    workflowSteps: [
-      { title: "Room Discovery", actor: "Guest", description: "Selects dates and room category on hotel website" },
-      { title: "Guaranteed Booking", actor: "Guest", description: "Pays deposit securely with immediate room block" },
-      { title: "Automated Welcome", actor: "INNORATECH Engine", description: "Dispatches WhatsApp check-in guide and location" },
-      { title: "Front Desk Sync", actor: "Hotel Manager", description: "Reservation appears on centralized calendar" },
+    capabilities: [
+      "Hotel website",
+      "Room catalogue",
+      "Availability search",
+      "Direct booking",
+      "Payment integration",
+      "Reservation dashboard",
+      "Guest information",
+      "Booking notifications",
     ],
-    impactMetrics: [
-      { label: "Direct Bookings", value: "+45%" },
-      { label: "OTA Commission Leakage", value: "-60%" },
-      { label: "Check-in Friction", value: "Instant" },
+    workflow: [
+      {
+        title: "Guest",
+        description: "Guest visits the hotel's website and searches for available rooms.",
+      },
+      {
+        title: "Availability",
+        description: "Available room options are presented based on the selected dates.",
+      },
+      {
+        title: "Booking",
+        description: "Guest enters their details and confirms the reservation.",
+      },
+      {
+        title: "Payment",
+        description: "Payment is processed through the configured payment provider.",
+      },
+      {
+        title: "Hotel",
+        description: "The reservation becomes available in the hotel dashboard.",
+      },
     ],
+    cta: "Discuss Your Hotel Workflow",
+    relatedServices: ["business-websites", "web-applications", "api-integrations"],
+    relatedProjectSlug: "hotel-direct-booking",
   },
+
   {
-    id: "bakeries",
     slug: "bakeries",
-    badge: "Retail & Bakeries",
-    title: "Custom Cake & Order Automation for Bakeries",
-    tagline: "Eliminate lost cake specifications and disorganized chat orders.",
-    problemSummary:
-      "Custom cake specifications, flavor choices, delivery dates, and advance payments get buried inside WhatsApp chats, leading to production mistakes and missed deadlines.",
-    solutionSummary:
-      "An intuitive custom cake builder with slot-based pickup scheduling, automatic production run-sheets, and automated order status notifications.",
-    features: [
-      "Multi-attribute custom cake builder (flavor, weight, tier, notes)",
-      "Capacity-controlled pickup and delivery slot locks",
-      "Automated daily production run-sheet generation for chefs",
-      "Instant payment receipts and order status tracking",
-      "Customer notification alerts when order is boxed and ready",
+    eyebrow: "BAKERIES",
+    title: "Digital ordering and automation for bakeries.",
+    shortDescription:
+      "Centralize product orders, custom cake requirements, payments, and production workflows.",
+    description:
+      "INNORATECH helps bakeries move custom ordering and routine sales workflows from scattered conversations into structured digital systems.",
+    problems: [
+      "Custom cake requirements handled through chat",
+      "Manual order tracking",
+      "Payment details spread across different channels",
+      "Production deadlines tracked manually",
     ],
-    workflowSteps: [
-      { title: "Custom Builder", actor: "Customer", description: "Selects design, weight, flavor, and pickup time" },
-      { title: "Advance Payment", actor: "Customer", description: "Completes deposit to lock production slot" },
-      { title: "Run-Sheet Entry", actor: "Kitchen System", description: "Item queued on chef's daily production sheet" },
-      { title: "Pickup Alert", actor: "Customer", description: "Receives notification when cake is ready" },
+    capabilities: [
+      "Bakery website",
+      "Product catalogue",
+      "E-commerce",
+      "Custom cake ordering",
+      "Payment integration",
+      "Order management",
+      "Production workflow",
+      "Customer notifications",
     ],
-    impactMetrics: [
-      { label: "Spec Accuracy", value: "100%" },
-      { label: "Prep Coordination", value: "Seamless" },
-      { label: "Phone Inquiries", value: "-75%" },
+    workflow: [
+      {
+        title: "Customer",
+        description: "Customer browses products or submits a custom cake requirement.",
+      },
+      {
+        title: "Order",
+        description: "Requirements and order information are captured in a structured format.",
+      },
+      {
+        title: "Payment",
+        description: "Payment or deposit is recorded through the configured workflow.",
+      },
+      {
+        title: "Production",
+        description: "The order enters the bakery's production workflow.",
+      },
+      {
+        title: "Completion",
+        description: "Customer receives the relevant order status or completion information.",
+      },
     ],
+    cta: "Discuss Your Bakery Workflow",
+    relatedServices: ["business-websites", "web-applications", "business-automation"],
+    relatedProjectSlug: "bakery-order-automation",
   },
+
   {
-    id: "business-automation",
     slug: "business-automation",
-    badge: "Operations & SMBs",
-    title: "Custom Process Automation & Internal Tools",
-    tagline: "Automate repetitive data re-entry and synchronize disconnected business tools.",
-    problemSummary:
-      "Staff waste hours every day copying information across spreadsheets, email threads, billing tools, and messaging channels, stalling business growth.",
-    solutionSummary:
-      "Tailored web applications, operations dashboards, lightweight CRMs, and two-way API integrations that eliminate repetitive manual data entry.",
-    features: [
-      "Custom internal operations dashboards & portals",
-      "Automated two-way data sync between software tools",
-      "Lightweight customer relationship management (CRM)",
-      "Automated payment and invoice reconciliation",
-      "Notification bots and automated reminder pipelines",
+    eyebrow: "CUSTOM AUTOMATION",
+    title: "Automate the manual work your business repeats every day.",
+    shortDescription:
+      "Build dashboards, internal tools, workflows, and integrations around your existing business process.",
+    description:
+      "When a business has a process that does not fit a standard package, INNORATECH can analyze the workflow and build a custom digital solution.",
+    problems: [
+      "Repetitive manual data entry",
+      "Information spread across spreadsheets and messages",
+      "Disconnected business systems",
+      "Manual notifications and follow-ups",
     ],
-    workflowSteps: [
-      { title: "Data Event", actor: "External Tool", description: "Customer signs contract or makes payment" },
-      { title: "Webhook Trigger", actor: "INNORATECH Flow", description: "Payload validated and mapped across systems" },
-      { title: "Database Record", actor: "Central DB", description: "Operations dashboard updated in real time" },
-      { title: "Team Notification", actor: "Operations", description: "Alert sent to team with zero manual copying" },
+    capabilities: [
+      "Business dashboards",
+      "CRM systems",
+      "Internal web applications",
+      "Workflow automation",
+      "Notifications",
+      "API integrations",
+      "Approval workflows",
+      "Custom portals",
     ],
-    impactMetrics: [
-      { label: "Hours Reclaimed", value: "15+ hrs/wk" },
-      { label: "Data Redundancy", value: "0%" },
-      { label: "Process Velocity", value: "5x Faster" },
+    workflow: [
+      {
+        title: "Discover",
+        description: "We map the current business process.",
+      },
+      {
+        title: "Define",
+        description: "We identify what should be automated and what should remain manual.",
+      },
+      {
+        title: "Design",
+        description: "We design the digital workflow and required system components.",
+      },
+      {
+        title: "Build",
+        description: "We implement the application, automation, and integrations.",
+      },
+      {
+        title: "Improve",
+        description: "The workflow can evolve as the business grows.",
+      },
     ],
+    cta: "Discuss Your Business Process",
+    relatedServices: ["web-applications", "business-automation", "api-integrations"],
+    relatedProjectSlug: "restaurant-digital-ordering",
   },
 ];

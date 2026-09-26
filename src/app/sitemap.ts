@@ -1,16 +1,15 @@
 import { MetadataRoute } from "next";
+import { solutions } from "@/data/solutions";
+import { services } from "@/data/services";
+import { projects } from "@/data/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://innoratech.com";
   const lastModified = new Date();
 
-  const routes = [
+  const coreRoutes = [
     "",
     "/solutions",
-    "/solutions/restaurants",
-    "/solutions/hotels",
-    "/solutions/bakeries",
-    "/solutions/business-automation",
     "/services",
     "/work",
     "/process",
@@ -20,10 +19,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/terms",
   ];
 
-  return routes.map((route) => ({
+  const solutionRoutes = solutions.map((s) => `/solutions/${s.slug}`);
+  const serviceRoutes = services.map((s) => `/services/${s.slug}`);
+  const projectRoutes = projects.map((p) => `/work/${p.slug}`);
+
+  const allRoutes = [
+    ...coreRoutes,
+    ...solutionRoutes,
+    ...serviceRoutes,
+    ...projectRoutes,
+  ];
+
+  return allRoutes.map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified,
     changeFrequency: route === "" ? "weekly" : "monthly",
-    priority: route === "" ? 1.0 : route.startsWith("/solutions") ? 0.8 : 0.6,
+    priority:
+      route === ""
+        ? 1.0
+        : route.startsWith("/solutions")
+        ? 0.85
+        : route.startsWith("/services")
+        ? 0.8
+        : route.startsWith("/work")
+        ? 0.75
+        : 0.6,
   }));
 }

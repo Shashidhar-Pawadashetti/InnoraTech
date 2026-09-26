@@ -1,87 +1,144 @@
-export interface ServiceItem {
-  id: string;
+export interface Service {
+  slug: string;
   number: string;
   title: string;
-  tagline: string;
+  shortDescription: string;
   description: string;
-  deliverables: string[];
-  technologies: string[];
+  capabilities: string[];
+  suitableFor: string[];
 }
 
-export const services: ServiceItem[] = [
+export type ServiceItem = Service;
+
+export const services: Service[] = [
   {
-    id: "business-websites",
+    slug: "business-websites",
     number: "01",
     title: "Business Websites",
-    tagline: "High-converting, performance-optimized websites built around clear commercial goals.",
+    shortDescription:
+      "Modern websites designed around business goals and customer journeys.",
     description:
-      "Modern websites designed to position your business as a market leader, explain your value proposition in seconds, and channel qualified visitors into inquiries.",
-    deliverables: [
-      "Custom responsive design (mobile, tablet, desktop)",
-      "Technical SEO hierarchy and rich metadata",
-      "Sub-second load times with modern image optimization",
-      "Integrated lead capture and analytics tracking",
+      "We build responsive business websites that establish a professional digital presence and create clear paths toward enquiries, bookings, or orders.",
+    capabilities: [
+      "Responsive design",
+      "Business pages",
+      "Landing pages",
+      "Enquiry forms",
+      "CMS where required",
+      "Analytics",
+      "SEO fundamentals",
+      "Deployment",
     ],
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel Edge"],
+    suitableFor: [
+      "Restaurants",
+      "Hotels",
+      "Bakeries",
+      "Retail businesses",
+      "Professional services",
+    ],
   },
+
   {
-    id: "web-applications",
+    slug: "web-applications",
     number: "02",
     title: "Web Applications",
-    tagline: "Custom portals, booking engines, and internal operations tools.",
+    shortDescription:
+      "Booking systems, ordering platforms, dashboards, portals, and internal applications.",
     description:
-      "Full-stack web applications tailored to your business workflow, replacing off-the-shelf software limitations with exact operational efficiency.",
-    deliverables: [
-      "Secure authentication and role-based permissions",
-      "Real-time dashboards and status monitoring",
-      "Transactional workflows and database architecture",
-      "Responsive cross-device interface for desktop and mobile",
+      "We build business web applications around specific workflows that need more than a standard website.",
+    capabilities: [
+      "Booking systems",
+      "Ordering systems",
+      "Dashboards",
+      "CRM systems",
+      "Internal tools",
+      "Customer portals",
+      "Authentication",
+      "Business workflows",
     ],
-    technologies: ["React Server Components", "PostgreSQL", "Drizzle ORM", "REST/Webhooks"],
+    suitableFor: [
+      "Restaurants",
+      "Hotels",
+      "Retail",
+      "Manufacturing",
+      "Professional services",
+    ],
   },
+
   {
-    id: "business-automation",
+    slug: "business-automation",
     number: "03",
     title: "Business Automation",
-    tagline: "Digital workflows that reduce repetitive manual work.",
+    shortDescription:
+      "Automate repetitive workflows, notifications, approvals, and business processes.",
     description:
-      "Automated event pipelines that eliminate manual human data entry, synchronizing customer actions with your internal operations seamlessly.",
-    deliverables: [
-      "Automated WhatsApp & Email customer notifications",
-      "Two-way invoice and payment reconciliation",
-      "Order routing and fulfillment triggers",
-      "Centralized event logging and error handling",
+      "We identify repetitive manual work and replace unnecessary steps with connected digital workflows.",
+    capabilities: [
+      "Workflow automation",
+      "Notifications",
+      "Approvals",
+      "Forms",
+      "Lead workflows",
+      "Order workflows",
+      "Internal process automation",
     ],
-    technologies: ["Resend", "WhatsApp Cloud API", "Webhooks", "Serverless Crons"],
+    suitableFor: [
+      "Growing businesses",
+      "Operations teams",
+      "Restaurants",
+      "Hotels",
+      "Retail businesses",
+    ],
   },
+
   {
-    id: "integrations",
+    slug: "api-integrations",
     number: "04",
     title: "API & Integrations",
-    tagline: "Payments, messaging, CRM, PMS, and third-party software connections.",
+    shortDescription:
+      "Connect payments, communication tools, business systems, and third-party APIs.",
     description:
-      "We connect the tools your business already uses—eliminating silos and enabling clean data communication between external platforms.",
-    deliverables: [
-      "Payment gateway integration (Stripe, UPI, Razorpay)",
-      "PMS / POS software integration",
-      "Third-party CRM and marketing sync",
-      "Custom webhook listeners and secure payload verification",
+      "We connect the systems your business already uses so information can move between them without repeated manual entry.",
+    capabilities: [
+      "Payment integrations",
+      "Email integrations",
+      "WhatsApp integrations",
+      "CRM integrations",
+      "PMS integrations",
+      "POS integrations",
+      "Third-party APIs",
     ],
-    technologies: ["Stripe", "Razorpay", "Twilio", "Google Cloud"],
+    suitableFor: [
+      "Hotels",
+      "Restaurants",
+      "E-commerce businesses",
+      "SaaS companies",
+      "Businesses with multiple systems",
+    ],
   },
+
   {
-    id: "maintenance",
+    slug: "deployment-maintenance",
     number: "05",
     title: "Deployment & Maintenance",
-    tagline: "Serverless speed, continuous uptime monitoring, and proactive support.",
+    shortDescription:
+      "Deploy, monitor, maintain, and improve your digital systems after launch.",
     description:
-      "We ensure your systems stay fast, secure, and reliable after launch, providing ongoing maintenance and technical enhancements as your business grows.",
-    deliverables: [
-      "Zero-config serverless global deployment on Vercel",
-      "Uptime monitoring and error alert systems",
-      "Security patches, dependency updates, and SSL renewal",
-      "Dedicated technical support and ongoing iteration",
+      "We provide the operational support required to keep business websites and applications running after launch.",
+    capabilities: [
+      "Cloud deployment",
+      "Domain and SSL",
+      "Monitoring",
+      "Backups",
+      "Security updates",
+      "Bug fixes",
+      "Minor improvements",
+      "Technical support",
     ],
-    technologies: ["Vercel Edge", "Cloudflare", "GitHub Actions", "Sentry"],
+    suitableFor: [
+      "Existing INNORATECH clients",
+      "Businesses with existing websites",
+      "Businesses with custom web applications",
+    ],
   },
 ];

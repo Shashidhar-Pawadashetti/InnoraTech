@@ -3,43 +3,43 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
-import { ProjectItem } from "@/data/projects";
+import type { Project } from "@/data/projects";
 
 export interface ProjectCardProps {
-  project: ProjectItem;
+  project: Project;
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Card hoverable className="flex flex-col justify-between h-full group">
+    <Card hoverable className="flex flex-col justify-between h-full group bg-white">
       <div>
         {/* Classification Badge */}
         <div className="flex items-center justify-between gap-2 mb-4">
-          <Badge variant={project.isDemo ? "demo" : "client"}>
-            {project.isDemo ? "INNORATECH Demo" : "Client Project"}
+          <Badge variant={project.status === "demo" ? "demo" : "client"}>
+            {project.label}
           </Badge>
           <span className="text-xs font-medium text-slate-500">
             {project.category}
           </span>
         </div>
 
-        {/* Title & Tagline */}
-        <h3 className="text-xl font-bold text-slate-900 group-hover:text-[#0C34C5] transition-colors mb-2">
+        {/* Title & Description */}
+        <h3 className="text-xl font-bold text-slate-900 group-hover:text-[var(--brand-primary)] transition-colors mb-2">
           {project.title}
         </h3>
-        <p className="text-sm font-medium text-slate-700 mb-3">
-          {project.tagline}
-        </p>
         <p className="text-sm text-slate-600 leading-relaxed mb-6">
           {project.description}
         </p>
 
-        {/* Key Features */}
+        {/* Workflow preview */}
         <div className="space-y-1.5 mb-6">
-          {project.keyFeatures.slice(0, 2).map((feat, i) => (
-            <div key={i} className="text-xs text-slate-600 flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0C34C5] shrink-0" />
-              <span>{feat}</span>
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+            Workflow Highlights
+          </p>
+          {project.workflow.slice(0, 3).map((step, idx) => (
+            <div key={idx} className="flex items-center gap-2 text-xs text-slate-700">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--brand-primary)] shrink-0" />
+              <span>{step}</span>
             </div>
           ))}
         </div>
@@ -47,19 +47,19 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
       <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
         <Link
-          href={`/work`}
-          className="inline-flex items-center text-sm font-semibold text-[#0C34C5] group-hover:text-[#09289E] gap-1.5"
+          href={`/work/${project.slug}`}
+          className="inline-flex items-center text-sm font-semibold text-[var(--brand-primary)] group-hover:text-[var(--brand-primary-hover)] gap-1.5"
         >
-          View Case Study{" "}
+          View Demo Flow{" "}
           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
         </Link>
-        <div className="flex gap-1.5">
-          {project.technologies.slice(0, 2).map((tech, idx) => (
+        <div className="flex gap-1.5 flex-wrap">
+          {project.services.slice(0, 2).map((svc, idx) => (
             <span
               key={idx}
               className="text-[11px] font-medium px-2 py-0.5 bg-slate-100 rounded text-slate-600"
             >
-              {tech}
+              {svc}
             </span>
           ))}
         </div>

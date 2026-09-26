@@ -1,102 +1,142 @@
-export interface ProjectItem {
-  id: string;
+export interface Project {
   slug: string;
-  title: string;
   category: string;
-  isDemo: boolean;
-  tagline: string;
+  label: string;
+  title: string;
   description: string;
+  status: "demo" | "client";
+  services: string[];
   problem: string;
-  existingProcess: string;
   solution: string;
-  keyFeatures: string[];
-  technologies: string[];
-  results: { metric: string; label: string }[];
+  workflow: string[];
+  outcome?: string;
+  relatedSolutionSlug?: string;
+  keyCapabilities?: string[];
+  demonstrates?: string[];
 }
 
-export const projects: ProjectItem[] = [
+export type ProjectItem = Project;
+
+export const projects: Project[] = [
   {
-    id: "restaurant-ordering",
-    slug: "restaurant-ordering",
-    title: "Restaurant Digital Ordering System",
-    category: "Hospitality & Dining",
-    isDemo: true,
-    tagline: "Direct commission-free table ordering & kitchen display flow.",
+    slug: "restaurant-digital-ordering",
+    category: "Restaurants",
+    label: "INNORATECH DEMO",
+    title: "Restaurant Digital Ordering",
     description:
-      "A complete hospitality platform replacing paper tickets with dynamic QR menus, instant UPI payments, and synchronized kitchen prep displays.",
-    problem:
-      "During peak meal hours, waitstaff waste 15 minutes per table writing down orders and walking slips to the kitchen. Phone takeaway orders cause repeated miscommunications.",
-    existingProcess:
-      "Customers wait for waiters $\\to$ orders recorded on paper slips $\\to$ waiter hand-delivers slip to kitchen $\\to$ kitchen re-reads handwritten notes $\\to$ cashier manually tallies bill.",
-    solution:
-      "A direct web application where patrons scan a table QR code, browse live categorized menus, pay via UPI, and tickets auto-route instantly to the kitchen display.",
-    keyFeatures: [
-      "Contactless QR table ordering with zero app download required",
-      "Live order status dashboard for kitchen staff",
-      "Instant automated receipts dispatched via WhatsApp",
-      "Direct settlement with zero 3rd-party aggregator commissions",
+      "A demonstration system for direct online ordering, QR table ordering, and restaurant-side order management.",
+    status: "demo",
+    services: [
+      "Business Websites",
+      "Web Applications",
+      "Business Automation",
     ],
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Neon PostgreSQL", "Resend"],
-    results: [
-      { metric: "100%", label: "Direct Margin Kept" },
-      { metric: "4.5 min", label: "Prep Time Saved / Table" },
-      { metric: "0", label: "Paper Slips Required" },
+    problem:
+      "Restaurant orders may arrive through phone calls while dine-in orders are handled manually using paper and pen.",
+    solution:
+      "A connected digital ordering workflow that supports online ordering, QR table ordering, and restaurant-side order management.",
+    workflow: [
+      "Customer opens website or scans table QR",
+      "Customer browses digital menu",
+      "Customer places order",
+      "Restaurant receives order",
+      "Kitchen processes order",
+      "Order status is updated",
+    ],
+    relatedSolutionSlug: "restaurants",
+    keyCapabilities: [
+      "Mobile-friendly digital menu browsing",
+      "Contactless QR table ordering with table tagging",
+      "Real-time kitchen order dispatch display",
+      "UPI & card payment integration",
+      "Automated order status notifications",
+    ],
+    demonstrates: [
+      "End-to-end direct ordering without aggregator commission fees",
+      "Elimination of manual pen-and-paper order recording errors",
+      "Real-time coordination between dining floor and kitchen staff",
+      "Instant order tracking and customer confirmation",
     ],
   },
+
   {
-    id: "hotel-booking",
-    slug: "hotel-booking",
-    title: "Hotel Direct Booking Platform",
-    category: "Hospitality & Lodging",
-    isDemo: true,
-    tagline: "Commission-free reservation engine with live calendar locks.",
+    slug: "hotel-direct-booking",
+    category: "Hotels",
+    label: "INNORATECH DEMO",
+    title: "Hotel Direct Booking",
     description:
-      "Direct room booking portal designed to capture guests looking to book directly, bypassing 18-25% OTA commissions.",
-    problem:
-      "The property relies heavily on phone bookings and WhatsApp messages. Staff frequently encounter double-booking errors and fail to secure advance deposits.",
-    existingProcess:
-      "Guest calls hotel $\\to$ receptionist checks physical paper diary $\\to$ sends bank details over WhatsApp $\\to$ waits for screenshot $\\to$ manually marks room reserved.",
-    solution:
-      "A fast, modern direct booking website with real-time room availability, immediate credit card/UPI deposit settlement, and automated WhatsApp confirmation messages.",
-    keyFeatures: [
-      "Dynamic room availability calendar with multi-tier pricing",
-      "Automated WhatsApp message with directions & check-in guidelines",
-      "Zero commission direct client reservations",
-      "Manager overview dashboard for arrivals, departures, and cleaning status",
+      "A demonstration system for direct room booking, payment, and reservation management.",
+    status: "demo",
+    services: [
+      "Business Websites",
+      "Web Applications",
+      "API & Integrations",
     ],
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL", "Drizzle ORM"],
-    results: [
-      { metric: "20%", label: "Average Commission Saved" },
-      { metric: "100%", label: "Deposit Pre-Payment Rate" },
-      { metric: "< 60s", label: "Instant Reservation Confirmation" },
+    problem:
+      "Room bookings may be handled through phone calls, WhatsApp, and external accommodation platforms.",
+    solution:
+      "A direct booking experience with room availability, reservation, payment, and hotel-side booking management.",
+    workflow: [
+      "Guest visits hotel website",
+      "Guest checks availability",
+      "Guest selects room",
+      "Guest enters details",
+      "Guest completes payment",
+      "Hotel receives reservation",
+    ],
+    relatedSolutionSlug: "hotels",
+    keyCapabilities: [
+      "Interactive calendar with live room rate tiers",
+      "Guaranteed room reservation with secure payment/deposit",
+      "Automated WhatsApp & email check-in instructions",
+      "Hotel dashboard for arrivals, departures, and availability",
+      "Exportable booking records for external PMS integration",
+    ],
+    demonstrates: [
+      "Capturing guest bookings directly without high OTA commissions",
+      "Zero room double-bookings through instant calendar locks",
+      "Automated payment and receipt dispatch without manual tracking",
+      "Centralized front-desk dashboard for room management",
     ],
   },
+
   {
-    id: "bakery-automation",
-    slug: "bakery-automation",
-    title: "Bakery Custom Order & Production Workflow",
-    category: "Retail & Bakery",
-    isDemo: true,
-    tagline: "Custom cake specification builder and automatic kitchen run-sheets.",
+    slug: "bakery-order-automation",
+    category: "Bakeries",
+    label: "INNORATECH DEMO",
+    title: "Bakery Order Automation",
     description:
-      "An automated ordering system handling custom design choices, scheduled delivery slots, and daily kitchen preparation lists.",
-    problem:
-      "Custom cake orders taken over chat get fragmented. Bakers miss specific dietary requests, flavor choices, or customized message inscriptions.",
-    existingProcess:
-      "Customer messages on Instagram $\\to$ chats back and forth for pricing $\\to$ payment confirmation lost in chat $\\to$ chef misses custom design details.",
-    solution:
-      "A guided cake configuration portal that calculates exact pricing, locks pickup slots, and compiles a daily production run-sheet for pastry chefs.",
-    keyFeatures: [
-      "Visual multi-attribute cake customizer (flavor, tier, message)",
-      "Daily printable production run-sheet for kitchen team",
-      "Automated slot availability management to prevent kitchen overload",
-      "Automated customer pickup reminders",
+      "A demonstration workflow for online ordering, custom cake requirements, and production tracking.",
+    status: "demo",
+    services: [
+      "Business Websites",
+      "Web Applications",
+      "Business Automation",
     ],
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel Serverless"],
-    results: [
-      { metric: "100%", label: "Custom Note Accuracy" },
-      { metric: "3 hrs/day", label: "Admin Chat Time Saved" },
-      { metric: "Zero", label: "Overbooked Delivery Slots" },
+    problem:
+      "Custom cake requirements and production information can become scattered across messages and manual records.",
+    solution:
+      "A structured digital ordering workflow that captures requirements and moves orders through production.",
+    workflow: [
+      "Customer submits requirements",
+      "Order details are captured",
+      "Payment/deposit is recorded",
+      "Order enters production",
+      "Customer receives status updates",
+    ],
+    relatedSolutionSlug: "bakeries",
+    keyCapabilities: [
+      "Guided multi-attribute cake customizer (flavor, tier, message)",
+      "Daily printable production run-sheet generation",
+      "Pickup and delivery slot capacity management",
+      "Advance deposit recording and receipt generation",
+      "Automated ready-for-pickup customer alerts",
+    ],
+    demonstrates: [
+      "100% structured custom order capture replacing unstructured chat threads",
+      "Clear production schedules eliminating forgotten deadlines",
+      "Automated status notifications reducing repetitive 'Is it ready?' queries",
+      "Capacity-controlled scheduling preventing kitchen overbooking",
     ],
   },
 ];
