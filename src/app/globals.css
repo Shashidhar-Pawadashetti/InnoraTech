@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand Tokens - Sampled from INNORATECH Logo */
+  --brand-primary: #0C3CD4;
+  --brand-primary-hover: #082FA8;
+  --brand-primary-subtle: #EBF1FF;
+  --brand-primary-glow: rgba(12, 60, 212, 0.15);
+
+  /* Typography / Text */
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+  --text-inverted: #FFFFFF;
+
+  /* Surfaces & Backgrounds */
+  --background: #FFFFFF;
+  --background-secondary: #F8FAFC;
+  --background-tertiary: #F1F5F9;
+  --background-dark: #0B1220;
+  --background-dark-surface: #131E32;
+
+  /* Borders */
+  --border: #E2E8F0;
+  --border-focus: #0C3CD4;
+  --border-dark: #1E293B;
+
+  /* Status Colors (Functional) */
+  --success: #16A34A;
+  --success-subtle: #DCFCE7;
+  --warning: #D97706;
+  --warning-subtle: #FEF3C7;
+  --error: #DC2626;
+  --error-subtle: #FEE2E2;
+
+  /* Border Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Elevation Shadows */
+  --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+  --shadow-card-hover: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+}
+
+@theme inline {
+  --color-brand: var(--brand-primary);
+  --color-brand-hover: var(--brand-primary-hover);
+  --color-brand-subtle: var(--brand-primary-subtle);
+  
+  --color-surface-primary: var(--background);
+  --color-surface-secondary: var(--background-secondary);
+  --color-surface-dark: var(--background-dark);
+
+  --color-text-main: var(--text-primary);
+  --color-text-body: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-border-default: var(--border);
+  --color-border-dark: var(--border-dark);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-secondary);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
