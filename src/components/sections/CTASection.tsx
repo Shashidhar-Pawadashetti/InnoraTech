@@ -1,54 +1,47 @@
-import * as React from "react";
-import Link from "next/link";
-import { ArrowRight, MessageSquareCode } from "lucide-react";
-import { Container } from "@/components/ui/Container";
+import { ArrowRight } from "lucide-react";
+
+import { Section } from "@/components/layout/Section";
+import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 
 export function CTASection() {
   return (
-    <section className="w-full bg-[#0B1220] py-20 sm:py-28 relative overflow-hidden">
-      {/* Background glow accent */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#0C34C5]/20 blur-[120px] rounded-full pointer-events-none" />
+    <Section id="cta" className="bg-white">
+      <Container>
+        <div className="relative overflow-hidden rounded-[28px] bg-[var(--surface-dark)] px-7 py-14 sm:px-10 sm:py-16 lg:px-16 shadow-xl">
+          <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl pointer-events-none" />
 
-      <Container className="relative text-center">
-        <div className="max-w-3xl mx-auto space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0C34C5]/20 border border-[#0C34C5]/40 text-[#38BDF8] text-xs font-semibold uppercase tracking-wider">
-            <MessageSquareCode className="w-3.5 h-3.5" />
-            <span>Ready to Eliminate Friction?</span>
-          </div>
+          <div className="relative max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.14em] text-blue-300">
+              START A PROJECT
+            </p>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
-            Have a Manual Process You Want to Fix?
-          </h2>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
+              Have a manual process you want to fix?
+            </h2>
 
-          <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto">
-            Tell us how your business currently handles orders, bookings, or daily
-            tasks. We will help you identify where digital systems can eliminate
-            repetitive work and protect your margins.
-          </p>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
+              Tell us how your business currently works. We&apos;ll help you
+              identify where technology can simplify the process.
+            </p>
 
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/contact" className="w-full sm:w-auto">
-              <Button size="lg" className="w-full sm:w-auto shadow-lg shadow-[#0C34C5]/25">
-                Start a Project <ArrowRight className="w-4 h-4 ml-1.5" />
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button href="/contact">
+                Let&apos;s Talk
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-            </Link>
-            <Link href="/solutions" className="w-full sm:w-auto">
+
               <Button
+                href="/solutions"
                 variant="outline"
-                size="lg"
-                className="w-full sm:w-auto border-slate-700 text-white hover:bg-slate-800 hover:text-white"
+                className="border-white/20 text-white hover:bg-white/10 hover:text-white"
               >
                 Explore Solutions
               </Button>
-            </Link>
+            </div>
           </div>
-
-          <p className="text-xs text-slate-400 pt-2">
-            No obligation • Discovery consultation with our founding engineering team
-          </p>
         </div>
       </Container>
-    </section>
+    </Section>
   );
 }

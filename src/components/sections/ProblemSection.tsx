@@ -1,61 +1,79 @@
-import * as React from "react";
-import { UtensilsCrossed, Building2, Cake, Layers } from "lucide-react";
-import { Container } from "@/components/ui/Container";
-import { Section } from "@/components/ui/Section";
-import { SectionHeader } from "@/components/ui/SectionHeader";
-import { ProblemCard } from "@/components/cards/ProblemCard";
+import {
+  Hotel,
+  ClipboardList,
+  MessageSquareText,
+  Store,
+} from "lucide-react";
+
+import { Section } from "@/components/layout/Section";
+import { SectionHeader } from "@/components/layout/SectionHeader";
+import { Card } from "@/components/ui/Card";
+
+const problems = [
+  {
+    icon: ClipboardList,
+    label: "Restaurants",
+    title: "Paper-based ordering",
+    description:
+      "Dine-in orders are often written manually and passed from waiter to kitchen, creating delays and mistakes.",
+  },
+  {
+    icon: Hotel,
+    label: "Hotels",
+    title: "Manual room bookings",
+    description:
+      "Reservations can arrive through phone calls, WhatsApp, and multiple booking platforms.",
+  },
+  {
+    icon: MessageSquareText,
+    label: "Bakeries",
+    title: "Orders across conversations",
+    description:
+      "Custom cake details, payments, and deadlines can become fragmented across chats and spreadsheets.",
+  },
+  {
+    icon: Store,
+    label: "Growing Businesses",
+    title: "Disconnected workflows",
+    description:
+      "Important work gets spread across paper, spreadsheets, messages, and separate software systems.",
+  },
+];
 
 export function ProblemSection() {
-  const problems = [
-    {
-      icon: UtensilsCrossed,
-      industry: "Restaurants",
-      headline: "Paper-based dine-in & phone orders",
-      description:
-        "Orders handled through phone calls, paper slips, and disconnected 3rd-party aggregators create kitchen errors and eat away at your margins.",
-      solutionLink: "/solutions/restaurants",
-    },
-    {
-      icon: Building2,
-      industry: "Hotels",
-      headline: "Scattered room reservations",
-      description:
-        "Bookings tracked through phone calls, WhatsApp messages, and external OTAs lead to double-bookings, delayed check-ins, and high commission leaks.",
-      solutionLink: "/solutions/hotels",
-    },
-    {
-      icon: Cake,
-      industry: "Bakeries",
-      headline: "Custom orders lost across messages",
-      description:
-        "Cake specifications, flavor notes, delivery slots, and advance payments get buried in chat threads, resulting in stressed bakers and missed deadlines.",
-      solutionLink: "/solutions/bakeries",
-    },
-    {
-      icon: Layers,
-      industry: "Business Operations",
-      headline: "Disconnected tools & spreadsheets",
-      description:
-        "Important customer and billing details are scattered across isolated tools, forcing your staff to waste 2–3 hours every day re-entering information.",
-      solutionLink: "/solutions/business-automation",
-    },
-  ];
-
   return (
-    <Section variant="light" padding="md" id="problems">
-      <Container>
-        <SectionHeader
-          eyebrow="The Bottleneck"
-          title="Still Running Important Processes Manually?"
-          description="Where business processes become manual, we build the digital workflow. Eliminate friction, reduce errors, and stop paying avoidable commissions."
-        />
+    <Section id="problems">
+      <SectionHeader
+        eyebrow="THE PROBLEM"
+        title="Still Managing Important Work Manually?"
+        description="We start by understanding how your business actually operates, then design a digital system around the workflow."
+      />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {problems.map((prob, idx) => (
-            <ProblemCard key={idx} {...prob} />
-          ))}
-        </div>
-      </Container>
+      <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        {problems.map((problem) => {
+          const Icon = problem.icon;
+
+          return (
+            <Card key={problem.title} className="group">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[var(--brand-primary-soft)]">
+                <Icon className="h-5 w-5 text-[var(--brand-primary)]" />
+              </div>
+
+              <p className="mt-6 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--brand-primary)]">
+                {problem.label}
+              </p>
+
+              <h3 className="mt-2 text-xl font-semibold tracking-tight text-[var(--text-primary)]">
+                {problem.title}
+              </h3>
+
+              <p className="mt-3 text-sm leading-6 text-[var(--text-secondary)]">
+                {problem.description}
+              </p>
+            </Card>
+          );
+        })}
+      </div>
     </Section>
   );
 }

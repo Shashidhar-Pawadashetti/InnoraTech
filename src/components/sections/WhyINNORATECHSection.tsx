@@ -1,66 +1,71 @@
-import * as React from "react";
-import { Target, Wrench, Network, ShieldCheck } from "lucide-react";
-import { Container } from "@/components/ui/Container";
-import { Section } from "@/components/ui/Section";
-import { SectionHeader } from "@/components/ui/SectionHeader";
-import { Card } from "@/components/ui/Card";
+import {
+  Boxes,
+  Compass,
+  Link2,
+  LifeBuoy,
+} from "lucide-react";
+
+import { Section } from "@/components/layout/Section";
+import { SectionHeader } from "@/components/layout/SectionHeader";
+
+const principles = [
+  {
+    icon: Compass,
+    title: "Problem First",
+    description:
+      "We understand the business workflow before deciding which technology should be used.",
+  },
+  {
+    icon: Boxes,
+    title: "Practical",
+    description:
+      "We focus on solutions that fit the business instead of adding unnecessary complexity.",
+  },
+  {
+    icon: Link2,
+    title: "Connected",
+    description:
+      "Websites, applications, automations, and external systems should work together.",
+  },
+  {
+    icon: LifeBuoy,
+    title: "Long-Term",
+    description:
+      "Our relationship doesn't have to end when the project goes live.",
+  },
+];
 
 export function WhyINNORATECHSection() {
-  const principles = [
-    {
-      icon: Target,
-      title: "Problem First",
-      description:
-        "We start with your actual operational bottleneck, not an arbitrary tech stack. We analyze how your team handles orders or bookings before proposing software.",
-    },
-    {
-      icon: Wrench,
-      title: "Practical Solutions",
-      description:
-        "We engineer right-sized systems appropriate for your business size and budget. No bloated enterprise layers or unnecessary subscription subscriptions.",
-    },
-    {
-      icon: Network,
-      title: "Connected Systems",
-      description:
-        "Your website, databases, messaging channels, and payment gateways work together in harmony rather than becoming isolated, fragmented tools.",
-    },
-    {
-      icon: ShieldCheck,
-      title: "Long-Term Accountability",
-      description:
-        "We do not vanish after deployment. We continue monitoring, maintaining, and improving your systems as your business volume expands.",
-    },
-  ];
-
   return (
-    <Section variant="slate" padding="md" id="why-us">
-      <Container>
-        <SectionHeader
-          eyebrow="Our Approach"
-          title="Why Work With INNORATECH?"
-          description="We avoid generic marketing clichés. Our engineering philosophy is grounded in solving tangible manual problems for real operating businesses."
-        />
+    <Section id="why-us" className="bg-[var(--surface-secondary)]">
+      <SectionHeader
+        eyebrow="WHY INNORATECH"
+        title="Technology Should Fit the Business."
+        description="Our approach starts with the problem and works backward toward a practical digital solution."
+      />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {principles.map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <Card key={idx} hoverable className="h-full">
-                <div className="w-12 h-12 rounded-xl bg-[#0C34C5]/10 text-[#0C34C5] flex items-center justify-center mb-6">
-                  <Icon className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  {item.description}
-                </p>
-              </Card>
-            );
-          })}
-        </div>
-      </Container>
+      <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        {principles.map((principle) => {
+          const Icon = principle.icon;
+
+          return (
+            <div
+              key={principle.title}
+              className="border-l-2 border-[var(--brand-primary)] pl-5 transition-transform hover:translate-x-0.5"
+            >
+              <Icon className="h-5 w-5 text-[var(--brand-primary)]" />
+
+              <h3 className="mt-5 text-lg font-semibold text-[var(--text-primary)]">
+                {principle.title}
+              </h3>
+
+              <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
+                {principle.description}
+              </p>
+            </div>
+          );
+        })}
+      </div>
     </Section>
   );
 }

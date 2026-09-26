@@ -5,6 +5,7 @@ export interface SectionHeaderProps {
   title: ReactNode;
   description?: ReactNode;
   align?: "left" | "center";
+  tone?: "light" | "dark";
   theme?: "light" | "dark";
   className?: string;
 }
@@ -14,10 +15,11 @@ export function SectionHeader({
   title,
   description,
   align = "left",
+  tone,
   theme = "light",
   className = "",
 }: SectionHeaderProps) {
-  const isDark = theme === "dark";
+  const isDark = (tone ?? theme) === "dark";
   const alignment =
     align === "center"
       ? "mx-auto text-center"

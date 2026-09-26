@@ -1,39 +1,92 @@
-import * as React from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { Container } from "@/components/ui/Container";
-import { Section } from "@/components/ui/Section";
-import { SectionHeader } from "@/components/ui/SectionHeader";
-import { Button } from "@/components/ui/Button";
-import { SolutionCard } from "@/components/cards/SolutionCard";
-import { solutions } from "@/data/solutions";
+import {
+  ArrowUpRight,
+  CakeSlice,
+  Hotel,
+  Utensils,
+  Workflow,
+} from "lucide-react";
+
+import { Section } from "@/components/layout/Section";
+import { SectionHeader } from "@/components/layout/SectionHeader";
+
+const solutions = [
+  {
+    href: "/solutions/restaurants",
+    icon: Utensils,
+    eyebrow: "RESTAURANTS",
+    title: "Digital Ordering & Dine-in",
+    description:
+      "Websites, online ordering, QR table ordering, payments, and connected order workflows.",
+  },
+  {
+    href: "/solutions/hotels",
+    icon: Hotel,
+    eyebrow: "HOTELS",
+    title: "Direct Booking & Reservations",
+    description:
+      "Hotel websites, room booking, payments, reservation workflows, and future integrations.",
+  },
+  {
+    href: "/solutions/bakeries",
+    icon: CakeSlice,
+    eyebrow: "BAKERIES",
+    title: "Ordering & Business Automation",
+    description:
+      "E-commerce, custom cake ordering, payments, order management, and production workflows.",
+  },
+  {
+    href: "/solutions/business-automation",
+    icon: Workflow,
+    eyebrow: "CUSTOM",
+    title: "Business Process Automation",
+    description:
+      "Dashboards, CRM systems, internal tools, workflow automation, and API integrations.",
+  },
+];
 
 export function SolutionsSection() {
   return (
-    <Section variant="slate" padding="md" id="solutions">
-      <Container>
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
-          <SectionHeader
-            eyebrow="Packaged Solutions"
-            title="Solutions Built Around the Way Your Business Works"
-            description="We deliver outcome-focused systems designed specifically for your industry's daily operational flow."
-            className="mb-0"
-          />
-          <div className="mt-6 md:mt-0">
-            <Link href="/solutions">
-              <Button variant="outline">
-                All Solutions <ArrowRight className="w-4 h-4 ml-1" />
-              </Button>
-            </Link>
-          </div>
-        </div>
+    <Section id="solutions" className="bg-[var(--surface-secondary)]">
+      <SectionHeader
+        eyebrow="SOLUTIONS"
+        title="Solutions Built Around the Way Your Business Works."
+        description="We design practical digital systems around real operational workflows rather than forcing businesses into generic software."
+      />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {solutions.map((sol) => (
-            <SolutionCard key={sol.id} solution={sol} />
-          ))}
-        </div>
-      </Container>
+      <div className="mt-12 grid gap-5 md:grid-cols-2">
+        {solutions.map((solution) => {
+          const Icon = solution.icon;
+
+          return (
+            <Link
+              key={solution.href}
+              href={solution.href}
+              className="group rounded-[var(--radius-xl)] border border-[var(--border-default)] bg-white p-7 transition-all duration-200 hover:-translate-y-1 hover:border-blue-200 hover:shadow-md sm:p-8"
+            >
+              <div className="flex items-start justify-between gap-6">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--brand-primary-soft)]">
+                  <Icon className="h-5 w-5 text-[var(--brand-primary)]" />
+                </div>
+
+                <ArrowUpRight className="h-5 w-5 text-slate-400 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[var(--brand-primary)]" />
+              </div>
+
+              <p className="mt-8 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--brand-primary)]">
+                {solution.eyebrow}
+              </p>
+
+              <h3 className="mt-2 text-2xl font-semibold tracking-tight text-[var(--text-primary)]">
+                {solution.title}
+              </h3>
+
+              <p className="mt-3 max-w-xl text-sm leading-7 text-[var(--text-secondary)]">
+                {solution.description}
+              </p>
+            </Link>
+          );
+        })}
+      </div>
     </Section>
   );
 }
