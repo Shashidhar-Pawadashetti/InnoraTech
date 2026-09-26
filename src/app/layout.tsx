@@ -1,22 +1,24 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+
 import { Navbar } from "@/components/navigation/Navbar";
-import { Footer } from "@/components/navigation/Footer";
+import { Footer } from "@/components/Footer";
+
+import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
-  display: "swap",
   variable: "--font-inter",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "INNORATECH — Turn Manual Work Into Digital Solutions",
+    default: "INNORATECH",
     template: "%s | INNORATECH",
   },
   description:
-    "INNORATECH helps businesses replace manual processes with modern websites, web applications, automation, and connected systems.",
+    "INNORATECH helps businesses replace manual processes with modern websites, web applications, automation, and integrations.",
   icons: {
     icon: "/brand/favicon.svg",
     apple: "/brand/favicon.svg",
@@ -29,8 +31,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-sans bg-white text-slate-800">
+    <html lang="en">
+      <body className={`${inter.variable} antialiased min-h-screen flex flex-col`}>
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

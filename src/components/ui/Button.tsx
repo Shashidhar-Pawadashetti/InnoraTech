@@ -1,50 +1,69 @@
+import Link from "next/link";
 import * as React from "react";
-import { cn } from "@/lib/utils";
+
+export type ButtonVariant = "primary" | "secondary" | "outline" | "ghost";
+export type ButtonSize = "sm" | "md" | "lg";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "outline" | "ghost";
-  size?: "sm" | "md" | "lg";
+  children: React.ReactNode;
+  href?: string;
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  className?: string;
   asChild?: boolean;
 }
+
+const baseStyles =
+  "inline-flex items-center justify-center font-semibold transition-all duration-200 focus-visible:outline-none cursor-pointer disabled:pointer-events-none disabled:opacity-50 select-none";
+
+const variants: Record<ButtonVariant, string> = {
+  primary:
+    "bg-[var(--brand-primary)] text-white hover:bg-[var(--brand-primary-hover)] shadow-sm",
+  secondary:
+    "border border-[var(--border-default)] bg-white text-[var(--text-primary)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-secondary)]",
+  outline:
+    "border border-[var(--border-default)] bg-transparent text-[var(--text-primary)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-secondary)]",
+  ghost:
+    "text-[var(--text-primary)] hover:bg-[var(--surface-secondary)]",
+};
+
+const sizes: Record<ButtonSize, string> = {
+  sm: "min-h-9 px-3.5 text-xs rounded-[var(--radius-sm)] gap-1.5",
+  md: "min-h-11 px-5 text-sm rounded-[var(--radius-md)] gap-2",
+  lg: "min-h-12 px-6 text-base rounded-[var(--radius-md)] gap-2.5",
+};
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
-      className,
+      children,
+      href,
       variant = "primary",
       size = "md",
+      className = "",
+      type = "button",
       disabled,
-      children,
       ...props
     },
     ref
   ) => {
-    const baseStyles =
-      "inline-flex items-center justify-center font-medium transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-60 cursor-pointer";
+    const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
 
-    const variants = {
-      primary:
-        "bg-[#0C34C5] hover:bg-[#09289E] text-white shadow-sm focus-visible:ring-[#0C34C5]",
-      secondary:
-        "bg-slate-100 hover:bg-slate-200 text-slate-900 focus-visible:ring-slate-400",
-      outline:
-        "border border-slate-300 hover:border-slate-400 bg-transparent text-slate-800 hover:bg-slate-50 focus-visible:ring-slate-400",
-      ghost:
-        "bg-transparent hover:bg-slate-100 text-slate-700 hover:text-slate-900 focus-visible:ring-slate-400",
-    };
-
-    const sizes = {
-      sm: "h-9 px-3.5 text-xs rounded-md gap-1.5",
-      md: "h-11 px-5 text-sm rounded-lg gap-2",
-      lg: "h-12 px-6 text-base rounded-lg gap-2.5",
-    };
+    if (href) {
+      return (
+        <Link href={href} className={classes}>
+          {children}
+        </Link>
+      );
+    }
 
     return (
       <button
         ref={ref}
+        type={type}
         disabled={disabled}
-        className={cn(baseStyles, variants[variant], sizes[size], className)}
+        className={classes}
         {...props}
       >
         {children}
@@ -52,4 +71,5 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     );
   }
 );
+
 Button.displayName = "Button";
