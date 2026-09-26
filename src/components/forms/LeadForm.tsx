@@ -6,128 +6,179 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
 import { Textarea } from "@/components/ui/Textarea";
+import { FormField } from "./FormField";
+import { businessTypes, serviceInterests } from "@/types/lead";
+import { leadSchema } from "@/lib/lead-validation";
 
 export function LeadForm() {
   const [formData, setFormData] = React.useState({
-    fullName: "",
+    name: "",
     businessName: "",
     email: "",
     phone: "",
-    preferredContactMethod: "whatsapp",
-    businessType: "restaurant",
-    servicesNeeded: [] as string[],
+    businessType: "",
+    serviceInterest: "",
     problemDescription: "",
     websiteUrl: "",
     budgetRange: "",
-    company_website_confirm: "", // Honeypot
+    preferredContactMethod: "WhatsApp",
+    companyWebsite: "", // Honeypot
   });
 
-  const [status, setStatus] = React.useState<
-    "idle" | "submitting" | "success" | "error"
-  >("idle");
+  const [fieldErrors, setFieldErrors] = React.useState<Record<string, string>>({});
+  const [status, setStatus] = React.useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = React.useState("");
 
-  const serviceOptions = [
-    "Business Website",
-    "Online Ordering",
-    "Booking System",
-    "E-commerce",
-    "Business Automation",
-    "Web Application",
-    "API / Integration",
-    "Maintenance & Support",
-    "Not Sure — Consultation",
-  ];
+  // Track form open event on mount
+  React.useEffect(() => {
+    if (typeof window !== "undefined" && (window as unknown as { va?: (type: string, data: object) => void }).va) {
+      (window as unknown as { va: (type: string, data: object) => void }).va("event", {
+        name: "contact_form_open",
+        sourcePage: window.location.pathname,
+      });
+    }
+  }, []);
 
-  const toggleService = (svc: string) => {
-    setFormData((prev) => {
-      const exists = prev.servicesNeeded.includes(svc);
-      if (exists) {
-        return {
-          ...prev,
-          servicesNeeded: prev.servicesNeeded.filter((s) => s !== svc),
-        };
-      } else {
-        return { ...prev, servicesNeeded: [...prev.servicesNeeded, svc] };
-      }
-    });
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (fieldErrors[name]) {
+      setFieldErrors((prev) => ({ ...prev, [name]: "" }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("submitting");
     setErrorMessage("");
+    setFieldErrors({});
 
-    if (formData.servicesNeeded.length === 0) {
-      setStatus("error");
-      setErrorMessage("Please select at least one service or area of interest.");
+    // Track submit attempt
+    if (typeof window !== "undefined" && (window as unknown as { va?: (type: string, data: object) => void }).va) {
+      (window as unknown as { va: (type: string, data: object) => void }).va("event", {
+        name: "contact_form_submit",
+      });
+    }
+
+    // Capture dynamic browser attribution on submit
+    const params = typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null;
+    const attribution = {
+      sourcePage: typeof window !== "undefined" ? window.location.pathname : "/contact",
+      utmSource: params?.get("utm_source") || "",
+      utmMedium: params?.get("utm_medium") || "",
+      utmCampaign: params?.get("utm_campaign") || "",
+    };
+
+    // Client-side validation for immediate feedback
+    const payload = {
+      ...formData,
+      ...attribution,
+      turnstileToken: "cf-turnstile-dummy",
+    };
+
+    const validation = leadSchema.safeParse(payload);
+    if (!validation.success) {
+      const errors: Record<string, string> = {};
+      validation.error.issues.forEach((issue) => {
+        const path = issue.path[0];
+        if (path && typeof path === "string") {
+          errors[path] = issue.message;
+        }
+      });
+      setFieldErrors(errors);
+      setStatus("idle");
+      setErrorMessage("Please check the highlighted form fields before submitting.");
       return;
     }
 
     try {
       const res = await fetch("/api/leads", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...formData,
-          sourcePage: window.location.pathname,
-          referrer: document.referrer || null,
-        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
       });
 
-      const json = await res.json();
-      if (res.ok && json.success) {
+      const data = await res.json();
+
+      if (res.status === 201 && data.success) {
         setStatus("success");
+
+        // Fire conversion event ONLY on confirmed 201 response
+        if (typeof window !== "undefined" && (window as unknown as { va?: (type: string, data: object) => void }).va) {
+          (window as unknown as { va: (type: string, data: object) => void }).va("event", {
+            name: "contact_form_success",
+            businessType: formData.businessType,
+            serviceInterest: formData.serviceInterest,
+          });
+        }
       } else {
         setStatus("error");
-        setErrorMessage(
-          json.message || "Failed to submit enquiry. Please try again."
-        );
+        setErrorMessage(data.message || "We couldn't submit your enquiry. Please try again.");
+
+        if (typeof window !== "undefined" && (window as unknown as { va?: (type: string, data: object) => void }).va) {
+          (window as unknown as { va: (type: string, data: object) => void }).va("event", {
+            name: "contact_form_error",
+            status: res.status,
+          });
+        }
       }
-    } catch {
+    } catch (err) {
+      console.error("[FORM_SUBMIT_NETWORK_ERROR]", err);
       setStatus("error");
-      setErrorMessage(
-        "Network error. Please check your connection or contact us directly."
-      );
+      setErrorMessage("Network error. Please try again or reach out directly via WhatsApp or email.");
+
+      if (typeof window !== "undefined" && (window as unknown as { va?: (type: string, data: object) => void }).va) {
+        (window as unknown as { va: (type: string, data: object) => void }).va("event", {
+          name: "contact_form_error",
+          status: "network_exception",
+        });
+      }
     }
   };
 
+  // Success UI
   if (status === "success") {
     return (
-      <div className="p-8 sm:p-10 rounded-2xl bg-emerald-50/70 border border-emerald-200 text-slate-800 space-y-4">
-        <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
-          <CheckCircle2 className="w-6 h-6" />
+      <div className="rounded-2xl border border-emerald-200 bg-emerald-50/70 p-8 sm:p-12 shadow-sm text-slate-900 animate-in fade-in duration-200">
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 mb-6">
+          <CheckCircle2 className="h-6 w-6" />
         </div>
-        <h3 className="text-2xl font-bold text-slate-900">
-          Enquiry Received Successfully!
+
+        <h3 className="text-2xl font-bold text-slate-900 sm:text-3xl">
+          Thanks — your enquiry has been received.
         </h3>
-        <p className="text-sm text-slate-600 leading-relaxed">
-          Thank you for sharing your project requirements. Our founding team will
-          review your operational details and get back to you via your preferred
-          contact channel within <strong>24 business hours</strong>.
+
+        <p className="mt-4 text-base leading-relaxed text-slate-700">
+          We&apos;ve received the details about your project and will review them before
+          getting back to you. An engineer will examine your operational workflow
+          and prepare a clear architectural proposal.
         </p>
-        <div className="pt-4">
-          <Button
-            variant="outline"
-            onClick={() => {
-              setStatus("idle");
-              setFormData({
-                fullName: "",
-                businessName: "",
-                email: "",
-                phone: "",
-                preferredContactMethod: "whatsapp",
-                businessType: "restaurant",
-                servicesNeeded: [],
-                problemDescription: "",
-                websiteUrl: "",
-                budgetRange: "",
-                company_website_confirm: "",
-              });
-            }}
-          >
-            Submit Another Inquiry
+
+        <div className="mt-8 flex flex-wrap gap-4">
+          <Button href="/solutions">
+            Explore Our Solutions
+            <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
+          <Button href="/" variant="secondary">
+            Back to INNORATECH
+          </Button>
+        </div>
+
+        <div className="mt-8 pt-6 border-t border-emerald-200/80 text-xs text-slate-500">
+          Urgent project query? Reach out directly via WhatsApp at{" "}
+          <a
+            href="https://wa.me/919876543210"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-[var(--brand-primary)] hover:underline"
+          >
+            +91 98765 43210
+          </a>
+          .
         </div>
       </div>
     );
@@ -136,264 +187,230 @@ export function LeadForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="p-6 sm:p-10 rounded-2xl border border-slate-200 bg-white shadow-sm space-y-8"
+      noValidate
+      className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-10 shadow-sm space-y-6"
     >
-      {/* Honeypot field (hidden from real users) */}
+      {/* Honeypot field (hidden from real users, rejects bots) */}
       <input
         type="text"
-        name="company_website_confirm"
-        value={formData.company_website_confirm}
-        onChange={(e) =>
-          setFormData({ ...formData, company_website_confirm: e.target.value })
-        }
-        style={{ display: "none" }}
+        name="companyWebsite"
+        value={formData.companyWebsite}
+        onChange={handleChange}
         tabIndex={-1}
         autoComplete="off"
+        className="absolute left-[-9999px] opacity-0 pointer-events-none"
+        aria-hidden="true"
       />
 
-      {/* Step 1: About You */}
-      <div className="space-y-4">
-        <div className="border-b border-slate-100 pb-2">
-          <span className="text-xs font-bold text-[#0C34C5] uppercase tracking-wider">
-            Step 1
-          </span>
-          <h4 className="text-lg font-bold text-slate-900">Contact Information</h4>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-              Full Name *
-            </label>
-            <Input
-              required
-              placeholder="e.g. Rahul Sharma"
-              value={formData.fullName}
-              onChange={(e) =>
-                setFormData({ ...formData, fullName: e.target.value })
-              }
-            />
-          </div>
-          <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-              Business / Brand Name *
-            </label>
-            <Input
-              required
-              placeholder="e.g. Blue Harbor Bistro"
-              value={formData.businessName}
-              onChange={(e) =>
-                setFormData({ ...formData, businessName: e.target.value })
-              }
-            />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-              Email Address *
-            </label>
-            <Input
-              type="email"
-              required
-              placeholder="rahul@example.com"
-              value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
-            />
-          </div>
-          <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-              Phone / WhatsApp Number *
-            </label>
-            <Input
-              type="tel"
-              required
-              placeholder="+91 98765 43210"
-              value={formData.phone}
-              onChange={(e) =>
-                setFormData({ ...formData, phone: e.target.value })
-              }
-            />
-          </div>
-        </div>
-
-        <div>
-          <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-            Preferred Contact Method
-          </label>
-          <div className="flex gap-4 text-xs font-medium text-slate-700">
-            {["whatsapp", "email", "phone"].map((method) => (
-              <label
-                key={method}
-                className="flex items-center gap-1.5 cursor-pointer capitalize"
-              >
-                <input
-                  type="radio"
-                  name="preferredContactMethod"
-                  value={method}
-                  checked={formData.preferredContactMethod === method}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      preferredContactMethod: e.target.value,
-                    })
-                  }
-                  className="text-[#0C34C5] focus:ring-[#0C34C5]"
-                />
-                <span>{method}</span>
-              </label>
-            ))}
-          </div>
-        </div>
+      <div className="border-b border-slate-100 pb-3">
+        <span className="text-xs font-bold uppercase tracking-wider text-[var(--brand-primary)]">
+          Project Inquiry
+        </span>
+        <h3 className="text-xl font-bold text-slate-900 mt-1">
+          Tell us about your business process
+        </h3>
       </div>
 
-      {/* Step 2: About the Project */}
-      <div className="space-y-4">
-        <div className="border-b border-slate-100 pb-2">
-          <span className="text-xs font-bold text-[#0C34C5] uppercase tracking-wider">
-            Step 2
-          </span>
-          <h4 className="text-lg font-bold text-slate-900">Project Requirements</h4>
-        </div>
-
-        <div>
-          <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-            Industry / Business Type *
-          </label>
-          <Select
-            value={formData.businessType}
-            onChange={(e) =>
-              setFormData({ ...formData, businessType: e.target.value })
-            }
-          >
-            <option value="restaurant">Restaurant / Café / Bar</option>
-            <option value="hotel">Hotel / Resort / Homestay</option>
-            <option value="bakery">Bakery / Confectionery</option>
-            <option value="retail">Retail Store / E-commerce</option>
-            <option value="manufacturing">Small Manufacturer</option>
-            <option value="healthcare">Clinic / Healthcare</option>
-            <option value="services">Professional Services / Agency</option>
-            <option value="startup">Tech Startup</option>
-            <option value="other">Other Business Type</option>
-          </Select>
-        </div>
-
-        <div>
-          <label className="block text-xs font-semibold text-slate-700 mb-2">
-            What do you need? (Select all that apply) *
-          </label>
-          <div className="flex flex-wrap gap-2">
-            {serviceOptions.map((svc) => {
-              const selected = formData.servicesNeeded.includes(svc);
-              return (
-                <button
-                  type="button"
-                  key={svc}
-                  onClick={() => toggleService(svc)}
-                  className={`text-xs font-medium px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
-                    selected
-                      ? "bg-[#0C34C5] text-white border-[#0C34C5] shadow-sm"
-                      : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
-                  }`}
-                >
-                  {selected ? "✓ " : "+ "}
-                  {svc}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        <div>
-          <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-            What manual process needs solving? *
-          </label>
-          <Textarea
+      {/* Row 1: Full Name & Business Name */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <FormField label="Full Name" required error={fieldErrors.name} id="name">
+          <Input
+            id="name"
+            name="name"
+            placeholder="e.g. Rahul Sharma"
+            value={formData.name}
+            onChange={handleChange}
             required
-            placeholder="e.g. We spend 3 hours daily writing delivery orders by hand and fielding phone bookings..."
-            value={formData.problemDescription}
-            onChange={(e) =>
-              setFormData({ ...formData, problemDescription: e.target.value })
-            }
           />
+        </FormField>
+
+        <FormField label="Business Name" required error={fieldErrors.businessName} id="businessName">
+          <Input
+            id="businessName"
+            name="businessName"
+            placeholder="e.g. Blue Harbor Bistro"
+            value={formData.businessName}
+            onChange={handleChange}
+            required
+          />
+        </FormField>
+      </div>
+
+      {/* Row 2: Email & Phone */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <FormField label="Email" required error={fieldErrors.email} id="email">
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="rahul@example.com"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+        </FormField>
+
+        <FormField label="Phone / WhatsApp" required error={fieldErrors.phone} id="phone">
+          <Input
+            id="phone"
+            name="phone"
+            type="tel"
+            placeholder="+91 98765 43210"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+          />
+        </FormField>
+      </div>
+
+      {/* Row 3: Business Type & Service Interest */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <FormField label="Business Type" required error={fieldErrors.businessType} id="businessType">
+          <Select
+            id="businessType"
+            name="businessType"
+            value={formData.businessType}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select your industry...</option>
+            {businessTypes.map((type) => (
+              <option key={type} value={type}>
+                {type}
+              </option>
+            ))}
+          </Select>
+        </FormField>
+
+        <FormField label="What do you need?" required error={fieldErrors.serviceInterest} id="serviceInterest">
+          <Select
+            id="serviceInterest"
+            name="serviceInterest"
+            value={formData.serviceInterest}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select requirement...</option>
+            {serviceInterests.map((interest) => (
+              <option key={interest} value={interest}>
+                {interest}
+              </option>
+            ))}
+          </Select>
+        </FormField>
+      </div>
+
+      {/* Problem Description */}
+      <FormField
+        label="Tell us about the problem"
+        required
+        error={fieldErrors.problemDescription}
+        id="problemDescription"
+        hint="Min. 20 characters"
+      >
+        <Textarea
+          id="problemDescription"
+          name="problemDescription"
+          rows={4}
+          placeholder="Describe your current manual steps, what software you use, and where the workflow breaks down..."
+          value={formData.problemDescription}
+          onChange={handleChange}
+          required
+        />
+      </FormField>
+
+      {/* Optional Fields */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+        <FormField label="Current Website" error={fieldErrors.websiteUrl} id="websiteUrl" hint="Optional">
+          <Input
+            id="websiteUrl"
+            name="websiteUrl"
+            type="url"
+            placeholder="https://example.com"
+            value={formData.websiteUrl}
+            onChange={handleChange}
+          />
+        </FormField>
+
+        <FormField label="Budget Range" id="budgetRange" hint="Optional">
+          <Select
+            id="budgetRange"
+            name="budgetRange"
+            value={formData.budgetRange}
+            onChange={handleChange}
+          >
+            <option value="">Select an investment tier...</option>
+            <option value="Under ₹50,000 / $600">Starter Package (Under ₹50k / $600)</option>
+            <option value="₹50k–₹1.5L / $600–$1,800">Standard System (₹50k–₹1.5L / $600–$1,800)</option>
+            <option value="₹1.5L–₹3L / $1,800–$3,500">Custom Full-Stack (₹1.5L–₹3L / $1,800–$3,500)</option>
+            <option value="Custom Enterprise">Custom Enterprise Process</option>
+          </Select>
+        </FormField>
+      </div>
+
+      {/* Preferred Contact Method */}
+      <div>
+        <label className="block text-xs font-semibold text-slate-700 mb-2">
+          Preferred Contact Method
+        </label>
+        <div className="flex gap-6 text-xs font-medium text-slate-700">
+          {["WhatsApp", "Email", "Phone"].map((method) => (
+            <label key={method} className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="radio"
+                name="preferredContactMethod"
+                value={method}
+                checked={formData.preferredContactMethod === method}
+                onChange={handleChange}
+                className="text-[var(--brand-primary)] focus:ring-[var(--brand-primary)]"
+              />
+              <span>{method}</span>
+            </label>
+          ))}
         </div>
       </div>
 
-      {/* Step 3: Additional Information */}
-      <div className="space-y-4">
-        <div className="border-b border-slate-100 pb-2">
-          <span className="text-xs font-bold text-[#0C34C5] uppercase tracking-wider">
-            Step 3
-          </span>
-          <h4 className="text-lg font-bold text-slate-900">Optional Details</h4>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-              Current Website / Social Profile (Optional)
-            </label>
-            <Input
-              type="url"
-              placeholder="https://yourbusiness.com"
-              value={formData.websiteUrl}
-              onChange={(e) =>
-                setFormData({ ...formData, websiteUrl: e.target.value })
-              }
-            />
-          </div>
-          <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-              Budget Range (Optional)
-            </label>
-            <Select
-              value={formData.budgetRange}
-              onChange={(e) =>
-                setFormData({ ...formData, budgetRange: e.target.value })
-              }
-            >
-              <option value="">Select an investment tier...</option>
-              <option value="tier_1">Starter Package (Under ₹50,000 / $600)</option>
-              <option value="tier_2">Standard Solution (₹50k–₹1.5L / $600–$1,800)</option>
-              <option value="tier_3">Custom Full-Stack (₹1.5L–₹3L / $1,800–$3,500)</option>
-              <option value="tier_enterprise">Custom Enterprise Workflow</option>
-            </Select>
-          </div>
-        </div>
-      </div>
-
-      {/* Error Alert */}
+      {/* Error Message */}
       {status === "error" && (
-        <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700 flex items-center gap-2">
-          <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
-          <span>{errorMessage}</span>
+        <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-xs text-red-800 flex items-start gap-2.5 animate-in fade-in duration-150">
+          <AlertCircle className="h-4 w-4 text-red-600 shrink-0 mt-0.5" />
+          <div>
+            <p className="font-semibold">{errorMessage}</p>
+            <p className="mt-1 text-slate-600">
+              You can also email us directly at{" "}
+              <a href="mailto:contact@innoratech.com" className="text-[var(--brand-primary)] underline">
+                contact@innoratech.com
+              </a>{" "}
+              or message us on WhatsApp.
+            </p>
+          </div>
         </div>
       )}
 
       {/* Submit Button */}
-      <Button
-        type="submit"
-        disabled={status === "submitting"}
-        size="lg"
-        className="w-full"
-      >
-        {status === "submitting" ? (
-          <>
-            <Loader2 className="w-4 h-4 animate-spin mr-2" />
-            Sending Project Inquiry...
-          </>
-        ) : (
-          <>
-            Let&apos;s Discuss Your Project <ArrowRight className="w-4 h-4 ml-1.5" />
-          </>
-        )}
-      </Button>
+      <div className="pt-2">
+        <Button
+          type="submit"
+          disabled={status === "submitting"}
+          size="lg"
+          className="w-full"
+        >
+          {status === "submitting" ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Submitting Your Enquiry...
+            </>
+          ) : (
+            <>
+              Send Project Enquiry
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </>
+          )}
+        </Button>
+      </div>
 
-      <p className="text-[11px] text-center text-slate-400">
-        We respect your privacy. No spam. You will speak directly with an INNORATECH engineer.
+      <p className="text-center text-[11px] text-slate-400">
+        Protected by Cloudflare Turnstile. Your data is never shared. Direct engineer consultation.
       </p>
     </form>
   );

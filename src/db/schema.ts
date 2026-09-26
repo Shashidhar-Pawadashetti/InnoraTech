@@ -1,4 +1,10 @@
-import { pgTable, text, timestamp, varchar, pgEnum } from "drizzle-orm/pg-core";
+import {
+  pgEnum,
+  pgTable,
+  text,
+  timestamp,
+  uuid,
+} from "drizzle-orm/pg-core";
 
 export const leadStatusEnum = pgEnum("lead_status", [
   "NEW",
@@ -11,34 +17,36 @@ export const leadStatusEnum = pgEnum("lead_status", [
 ]);
 
 export const leads = pgTable("leads", {
-  id: varchar("id", { length: 36 }).primaryKey(),
-  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  id: uuid("id").defaultRandom().primaryKey(),
 
-  // Contact Details
-  fullName: varchar("full_name", { length: 255 }).notNull(),
-  businessName: varchar("business_name", { length: 255 }).notNull(),
-  email: varchar("email", { length: 255 }).notNull(),
-  phone: varchar("phone", { length: 50 }).notNull(),
-  preferredContactMethod: varchar("preferred_contact_method", { length: 50 }).default("whatsapp").notNull(),
+  createdAt: timestamp("created_at", {
+    withTimezone: true,
+  })
+    .defaultNow()
+    .notNull(),
 
-  // Project Profile
-  businessType: varchar("business_type", { length: 100 }).notNull(),
-  servicesNeeded: text("services_needed").notNull(), // JSON string array
+  name: text("name").notNull(),
+  businessName: text("business_name").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone").notNull(),
+
+  businessType: text("business_type").notNull(),
+  serviceInterest: text("service_interest").notNull(),
+
   problemDescription: text("problem_description").notNull(),
-  websiteUrl: varchar("website_url", { length: 500 }),
-  budgetRange: varchar("budget_range", { length: 100 }),
 
-  // Attribution
-  sourcePage: varchar("source_page", { length: 500 }).notNull(),
-  referrer: varchar("referrer", { length: 500 }),
-  utmSource: varchar("utm_source", { length: 100 }),
-  utmMedium: varchar("utm_medium", { length: 100 }),
-  utmCampaign: varchar("utm_campaign", { length: 100 }),
+  websiteUrl: text("website_url"),
+  budgetRange: text("budget_range"),
+  preferredContactMethod: text("preferred_contact_method"),
 
-  // Operational State
-  status: leadStatusEnum("status").default("NEW").notNull(),
-  internalNotes: text("internal_notes"),
-  turnstileVerified: timestamp("turnstile_verified", { withTimezone: true }),
+  sourcePage: text("source_page"),
+  utmSource: text("utm_source"),
+  utmMedium: text("utm_medium"),
+  utmCampaign: text("utm_campaign"),
+
+  status: leadStatusEnum("status")
+    .default("NEW")
+    .notNull(),
 });
 
 export type Lead = typeof leads.$inferSelect;
