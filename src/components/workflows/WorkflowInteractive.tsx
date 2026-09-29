@@ -56,7 +56,7 @@ export function WorkflowInteractive({
               className={cn(
                 "cursor-pointer rounded-xl p-4 transition-all duration-200 border text-left",
                 isActive
-                  ? "bg-[#0C34C5]/20 border-[#38BDF8] ring-1 ring-[#38BDF8]/40"
+                  ? "bg-[#0C34C5]/20 border-[#38BDF8] ring-1 ring-[#38BDF8]/40 scale-[1.02]"
                   : "bg-slate-800/40 border-slate-800 hover:bg-slate-800/70 hover:border-slate-700"
               )}
             >
@@ -77,7 +77,7 @@ export function WorkflowInteractive({
               </div>
               <h5 className="text-sm font-semibold text-white mb-1.5 flex items-center gap-1.5">
                 {isPast ? (
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 animate-[fadeIn_0.3s_ease-out]" />
                 ) : null}
                 <span>{step.title}</span>
               </h5>

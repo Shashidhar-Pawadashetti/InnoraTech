@@ -150,7 +150,7 @@ export function LeadForm() {
         <div className="mt-8 flex flex-wrap gap-4">
           <Button href="/solutions">
             Explore Our Solutions
-            <ArrowRight className="ml-2 h-4 w-4" />
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>
           <Button href="/" variant="secondary">
             Back to INNORATECH
@@ -392,7 +392,7 @@ export function LeadForm() {
           ) : (
             <>
               Send Project Enquiry
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </>
           )}
         </Button>

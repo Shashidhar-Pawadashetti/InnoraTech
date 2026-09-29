@@ -2,6 +2,7 @@ import { ArrowRight, Check, Workflow } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/layout/Container";
 import { Badge } from "@/components/ui/Badge";
+import { Reveal } from "@/components/ui/Reveal";
 
 const workflowItems = [
   {
@@ -25,7 +26,7 @@ export function HeroSection() {
 
       <Container>
         <div className="grid min-h-[680px] items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:py-24">
-          <div>
+          <Reveal>
             <Badge>BUSINESS TECHNOLOGY SOLUTIONS</Badge>
 
             <h1 className="mt-6 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-[-0.03em] text-[var(--text-primary)] sm:text-5xl lg:text-6xl">
@@ -43,7 +44,7 @@ export function HeroSection() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Button href="/contact">
                 Start a Project
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
 
               <Button href="/solutions" variant="secondary">
@@ -67,9 +68,9 @@ export function HeroSection() {
                 Long-term support
               </span>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="relative">
+          <Reveal delay={1} className="relative">
             <div className="rounded-[28px] border border-[var(--border-default)] bg-[var(--surface-secondary)] p-6 shadow-sm sm:p-8">
               <div className="flex items-center justify-between border-b border-[var(--border-default)] pb-5">
                 <div>
@@ -125,7 +126,7 @@ export function HeroSection() {
                 Digital systems that work together.
               </p>
             </div>
-          </div>
+          </Reveal>
         </div>
       </Container>
     </section>

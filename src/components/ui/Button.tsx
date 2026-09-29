@@ -15,7 +15,7 @@ export interface ButtonProps
 }
 
 const baseStyles =
-  "inline-flex items-center justify-center font-semibold transition-all duration-200 focus-visible:outline-none cursor-pointer disabled:pointer-events-none disabled:opacity-50 select-none";
+  "group inline-flex items-center justify-center font-semibold transition-all duration-200 focus-visible:outline-none cursor-pointer disabled:pointer-events-none disabled:opacity-50 select-none active:scale-[0.97]";
 
 const variants: Record<ButtonVariant, string> = {
   primary:

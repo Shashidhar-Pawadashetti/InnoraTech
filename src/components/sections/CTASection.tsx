@@ -28,7 +28,7 @@ export function CTASection() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Button href="/contact">
                 Let&apos;s Talk
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
 
               <Button

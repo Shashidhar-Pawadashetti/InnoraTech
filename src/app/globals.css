@@ -123,7 +123,47 @@ img {
   outline-offset: 3px;
 }
 
+/* Animation keyframes — used via Tailwind v4 arbitrary animate-[...] utilities,
+   no plugin required. Respects prefers-reduced-motion via the global override below. */
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Scroll-reveal: used by src/components/ui/Reveal.tsx. Starts hidden,
+   becomes visible once IntersectionObserver confirms the element is in view. */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal[data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* No-JS safety net: if JavaScript never runs, content must not stay invisible */
+.no-js .reveal {
+  opacity: 1;
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
   html {
     scroll-behavior: auto;
   }
@@ -136,3 +176,4 @@ img {
     transition-duration: 0.01ms !important;
   }
 }
+

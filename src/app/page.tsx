@@ -7,6 +7,7 @@ import { ProcessSection } from "@/components/sections/ProcessSection";
 import { WorkSection } from "@/components/sections/WorkSection";
 import { WhyINNORATECHSection } from "@/components/sections/WhyINNORATECHSection";
 import { CTASection } from "@/components/sections/CTASection";
+import { Reveal } from "@/components/ui/Reveal";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://innoratech.com";
 
@@ -43,13 +44,13 @@ export default function Home() {
       <div className="flex flex-col w-full">
         <HeroSection />
         <CapabilityStrip />
-        <ProblemSection />
-        <SolutionsSection />
-        <ServicesSection />
+        <Reveal><ProblemSection /></Reveal>
+        <Reveal><SolutionsSection /></Reveal>
+        <Reveal><ServicesSection /></Reveal>
         <ProcessSection />
-        <WorkSection />
-        <WhyINNORATECHSection />
-        <CTASection />
+        <Reveal><WorkSection /></Reveal>
+        <Reveal><WhyINNORATECHSection /></Reveal>
+        <Reveal><CTASection /></Reveal>
       </div>
     </>
   );

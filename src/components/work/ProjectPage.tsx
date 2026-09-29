@@ -64,12 +64,12 @@ export function ProjectPage({ project }: ProjectPageProps) {
             <div className="mt-8 flex flex-wrap gap-4">
               <Button href="/contact">
                 Discuss Similar System
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
               {relatedSolution && (
                 <Button href={`/solutions/${relatedSolution.slug}`} variant="secondary">
                   Explore {relatedSolution.eyebrow} Solution
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               )}
             </div>
@@ -320,7 +320,7 @@ export function ProjectPage({ project }: ProjectPageProps) {
             <div className="mt-8 flex flex-wrap gap-4">
               <Button href="/contact">
                 Request a System Proposal
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
               <Button href="/work" variant="secondary">
                 View All Projects & Demos

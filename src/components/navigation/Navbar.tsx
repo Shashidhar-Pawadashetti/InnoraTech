@@ -84,7 +84,7 @@ export function Navbar() {
             </div>
 
             {activeDropdown === "solutions" && (
-              <div className="absolute top-full left-0 w-72 rounded-2xl bg-white p-3 shadow-xl ring-1 ring-slate-900/10 border border-slate-100 animate-in fade-in slide-in-from-top-2 duration-150">
+              <div className="absolute top-full left-0 w-72 rounded-2xl bg-white p-3 shadow-xl ring-1 ring-slate-900/10 border border-slate-100 animate-[fadeSlideDown_0.18s_ease-out]">
                 <div className="mb-2 px-3 pt-1">
                   <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
                     Industry Solutions
@@ -149,7 +149,7 @@ export function Navbar() {
             </div>
 
             {activeDropdown === "services" && (
-              <div className="absolute top-full left-0 w-80 rounded-2xl bg-white p-3 shadow-xl ring-1 ring-slate-900/10 border border-slate-100 animate-in fade-in slide-in-from-top-2 duration-150">
+              <div className="absolute top-full left-0 w-80 rounded-2xl bg-white p-3 shadow-xl ring-1 ring-slate-900/10 border border-slate-100 animate-[fadeSlideDown_0.18s_ease-out]">
                 <div className="mb-2 px-3 pt-1">
                   <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
                     Core Technical Services

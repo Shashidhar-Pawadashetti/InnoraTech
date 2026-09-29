@@ -10,6 +10,7 @@ import {
 
 import { Section } from "@/components/layout/Section";
 import { SectionHeader } from "@/components/layout/SectionHeader";
+import { Reveal } from "@/components/ui/Reveal";
 
 const steps = [
   {
@@ -74,30 +75,29 @@ export function ProcessSection() {
       />
 
       <div className="mt-14 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        {steps.map((step) => {
+        {steps.map((step, index) => {
           const Icon = step.icon;
 
           return (
-            <div
-              key={step.number}
-              className="rounded-[var(--radius-lg)] border border-white/10 bg-white/[0.03] p-6 transition-all duration-200 hover:border-white/20 hover:bg-white/[0.05]"
-            >
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-semibold text-blue-300">
-                  {step.number}
-                </span>
+            <Reveal key={step.number} delay={index} as="div">
+              <div className="rounded-[var(--radius-lg)] border border-white/10 bg-white/[0.03] p-6 transition-all duration-200 hover:border-white/20 hover:bg-white/[0.05] hover:-translate-y-1">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-semibold text-blue-300">
+                    {step.number}
+                  </span>
 
-                <Icon className="h-5 w-5 text-blue-300" />
+                  <Icon className="h-5 w-5 text-blue-300" />
+                </div>
+
+                <h3 className="mt-7 text-xl font-semibold text-white">
+                  {step.title}
+                </h3>
+
+                <p className="mt-3 text-sm leading-6 text-slate-300">
+                  {step.description}
+                </p>
               </div>
-
-              <h3 className="mt-7 text-xl font-semibold text-white">
-                {step.title}
-              </h3>
-
-              <p className="mt-3 text-sm leading-6 text-slate-300">
-                {step.description}
-              </p>
-            </div>
+            </Reveal>
           );
         })}
       </div>

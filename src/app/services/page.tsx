@@ -181,7 +181,7 @@ export default function ServicesPage() {
         <div className="mt-8 flex flex-wrap gap-4">
           <Button href="/contact">
             Discuss a Custom Project
-            <ArrowRight className="ml-2 h-4 w-4" />
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>
           <Button href="/solutions/business-automation" variant="secondary">
             View Custom Automation Solution
@@ -205,7 +205,7 @@ export default function ServicesPage() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Button href="/contact">
                 Contact INNORATECH
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </div>
           </div>

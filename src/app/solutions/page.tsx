@@ -125,7 +125,7 @@ export default function SolutionsPage() {
           <div className="mt-8 flex justify-center gap-4">
             <Button href="/contact">
               Talk to INNORATECH
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
             <Button href="/services" variant="secondary">
               Explore Our Core Services
