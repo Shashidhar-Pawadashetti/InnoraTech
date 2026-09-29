@@ -22,16 +22,18 @@ export function useInView<T extends HTMLElement = HTMLDivElement>({
   once = true,
 }: UseInViewOptions = {}) {
   const ref = useRef<T | null>(null);
-  // Lazy initializer, not a setState-in-effect: if IntersectionObserver isn't
-  // available for any reason, fail open — show the content immediately rather
-  // than leave it permanently hidden.
-  const [inView, setInView] = useState(
-    () => typeof IntersectionObserver === "undefined"
-  );
+  // Initial state is false on both server and client to guarantee matching hydration HTML
+  const [inView, setInView] = useState(false);
 
   useEffect(() => {
     const node = ref.current;
-    if (!node || typeof IntersectionObserver === "undefined") return;
+    if (!node) return;
+
+    // Fail open if IntersectionObserver is unavailable in the browser environment
+    if (typeof IntersectionObserver === "undefined") {
+      setInView(true);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
