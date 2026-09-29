@@ -1,5 +1,6 @@
 import Link from "next/link";
 import * as React from "react";
+import { cn } from "@/lib/utils";
 
 export type ButtonVariant = "primary" | "secondary" | "outline" | "ghost";
 export type ButtonSize = "sm" | "md" | "lg";
@@ -19,11 +20,11 @@ const baseStyles =
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-[var(--brand-primary)] text-white hover:bg-[var(--brand-primary-hover)] shadow-sm",
+    "bg-[var(--brand-primary)] !text-white hover:bg-[var(--brand-primary-hover)] shadow-sm",
   secondary:
-    "border border-[var(--border-default)] bg-white text-[var(--text-primary)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-secondary)]",
+    "border border-slate-800 bg-slate-900 !text-white hover:bg-slate-800 hover:border-slate-700 shadow-sm",
   outline:
-    "border border-[var(--border-default)] bg-transparent text-[var(--text-primary)] hover:border-[var(--border-strong)] hover:bg-[var(--surface-secondary)]",
+    "border border-white/30 bg-white/10 !text-white hover:bg-white/20 hover:border-white/50 shadow-sm",
   ghost:
     "text-[var(--text-primary)] hover:bg-[var(--surface-secondary)]",
 };
@@ -44,15 +45,22 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       className = "",
       type = "button",
       disabled,
+      style,
       ...props
     },
     ref
   ) => {
-    const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
+    const classes = cn(baseStyles, variants[variant], sizes[size], className);
+
+    // Guarantee white text on non-ghost button variants
+    const computedStyle: React.CSSProperties =
+      variant !== "ghost"
+        ? { color: "#ffffff", ...style }
+        : { ...style };
 
     if (href) {
       return (
-        <Link href={href} className={classes}>
+        <Link href={href} className={classes} style={computedStyle}>
           {children}
         </Link>
       );
@@ -64,6 +72,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         type={type}
         disabled={disabled}
         className={classes}
+        style={computedStyle}
         {...props}
       >
         {children}
