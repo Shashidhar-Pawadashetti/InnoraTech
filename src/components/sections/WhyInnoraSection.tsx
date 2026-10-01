@@ -35,11 +35,11 @@ const principles = [
   },
 ];
 
-export function WhyINNORATECHSection() {
+export function WhyInnoraSection() {
   return (
     <Section id="why-us" className="bg-[var(--surface-secondary)]">
       <SectionHeader
-        eyebrow="WHY INNORATECH"
+        eyebrow="WHY Innora"
         title="Technology Should Fit the Business."
         description="Our approach starts with the problem and works backward toward a practical digital solution."
       />

@@ -5,7 +5,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "INNORATECH Terms of Service and agency engagement terms.",
+  description: "Innora Terms of Service and agency engagement terms.",
   alternates: {
     canonical: "/terms",
   },
@@ -23,7 +23,7 @@ export default function TermsPage() {
 
         <div className="prose prose-slate max-w-none space-y-6 text-sm sm:text-base text-slate-600 leading-relaxed">
           <p>
-            Welcome to INNORATECH. By browsing our website or submitting project
+            Welcome to Innora. By browsing our website or submitting project
             inquiries, you agree to comply with and be bound by the following terms.
           </p>
 
@@ -31,7 +31,7 @@ export default function TermsPage() {
             1. Nature of Services
           </h3>
           <p>
-            INNORATECH is a technology solutions agency providing custom website
+            Innora is a technology solutions agency providing custom website
             engineering, web application development, workflow automation, and
             system integration services. Detailed deliverables, scopes of work,
             and service warranties are defined in mutually signed client
@@ -43,9 +43,9 @@ export default function TermsPage() {
           </h3>
           <p>
             All content, graphics, architectural diagrams, branding, and code
-            showcased on this website are the intellectual property of INNORATECH.
+            showcased on this website are the intellectual property of Innora.
             Demonstration projects are developed for capability validation and
-            are owned by INNORATECH unless explicitly licensed.
+            are owned by Innora unless explicitly licensed.
           </p>
 
           <h3 className="text-xl font-bold text-slate-900 pt-4">
@@ -63,7 +63,7 @@ export default function TermsPage() {
           </h3>
           <p>
             For legal inquiries or terms clarification, contact our management team
-            at <strong>contact@innoratech.com</strong>.
+            at <strong>hello@innoratech.in</strong>.
           </p>
         </div>
       </Container>

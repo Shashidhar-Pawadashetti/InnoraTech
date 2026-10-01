@@ -7,15 +7,15 @@ import { Reveal } from "@/components/ui/Reveal";
 const workflowItems = [
   {
     title: "Manual Process",
-    description: "Phone calls, paper, messages, spreadsheets",
+    description: "Phone bookings, WhatsApp orders, paper logs",
   },
   {
     title: "Digital System",
-    description: "Website, web application, centralized workflow",
+    description: "Direct booking site, online ordering, admin dashboard",
   },
   {
     title: "Automation",
-    description: "Connected processes, notifications, integrations",
+    description: "Guest notifications, kitchen alerts, PMS sync",
   },
 ];
 
@@ -27,18 +27,20 @@ export function HeroSection() {
       <Container>
         <div className="grid min-h-[680px] items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:py-24">
           <Reveal>
-            <Badge>BUSINESS TECHNOLOGY SOLUTIONS</Badge>
+            <Badge>FOR HOTELS & RESTAURANTS</Badge>
 
             <h1 className="mt-6 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-[-0.03em] text-[var(--text-primary)] sm:text-5xl lg:text-6xl">
-              Turn Manual Work Into{" "}
+              Stop Losing Bookings to{" "}
               <span className="text-[var(--brand-primary)]">
-                Digital Solutions.
+                Phone Calls and Commission Fees.
               </span>
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg lg:text-xl">
-              INNORATECH helps businesses replace manual processes with modern
-              websites, web applications, automation, and integrations.
+              Innora builds direct booking and ordering systems for independent
+              hotels and restaurants — so you keep the guest relationship
+              instead of losing it to phone-tag, OTAs, and delivery-app
+              commissions.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -55,12 +57,12 @@ export function HeroSection() {
             <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm text-[var(--text-secondary)]">
               <span className="inline-flex items-center gap-2">
                 <Check className="h-4 w-4 text-[var(--brand-primary)]" />
-                Business-focused
+                Hospitality-focused
               </span>
 
               <span className="inline-flex items-center gap-2">
                 <Check className="h-4 w-4 text-[var(--brand-primary)]" />
-                Custom-built
+                Live demos, not just decks
               </span>
 
               <span className="inline-flex items-center gap-2">
@@ -120,7 +122,7 @@ export function HeroSection() {
 
             <div className="absolute -bottom-5 -left-5 hidden rounded-2xl border border-blue-100 bg-white px-5 py-4 shadow-lg sm:block">
               <p className="text-xs text-[var(--text-muted)]">
-                INNORATECH
+                Innora
               </p>
               <p className="mt-1 text-sm font-semibold text-[var(--text-primary)]">
                 Digital systems that work together.

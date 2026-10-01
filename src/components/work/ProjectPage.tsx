@@ -84,14 +84,14 @@ export function ProjectPage({ project }: ProjectPageProps) {
             <div className="flex items-center gap-3 text-xs sm:text-sm text-blue-900">
               <span className="flex h-2 w-2 rounded-full bg-[var(--brand-primary)] shrink-0" />
               <p>
-                <strong>INNORATECH Working Concept:</strong> This project is a functional demonstration prototype built to illustrate the real-world operational architecture we implement for clients.
+                <strong>Innora Working Concept:</strong> This project is a functional demonstration prototype built to illustrate the real-world operational architecture we implement for clients.
               </p>
             </div>
           </Container>
         </div>
       )}
 
-      {/* Business Problem & The INNORATECH Solution */}
+      {/* Business Problem & The Innora Solution */}
       <Section>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Problem */}
@@ -115,7 +115,7 @@ export function ProjectPage({ project }: ProjectPageProps) {
           <div className="rounded-2xl border border-[var(--brand-primary)]/30 bg-white p-8 shadow-sm ring-1 ring-[var(--brand-primary)]/10">
             <div className="flex items-center gap-2 text-[var(--brand-primary)] text-xs font-semibold uppercase tracking-wider mb-4">
               <CheckCircle2 className="w-4 h-4" />
-              <span>The INNORATECH Solution</span>
+              <span>The Innora Solution</span>
             </div>
             <h3 className="text-xl font-bold text-slate-900 mb-3">
               Automated Digital Architecture

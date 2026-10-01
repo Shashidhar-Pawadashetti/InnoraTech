@@ -15,20 +15,20 @@ const inter = Inter({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://innoratech.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://innoratech.in";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
 
   title: {
-    default: "INNORATECH | Digital Solutions for Growing Businesses",
-    template: "%s | INNORATECH",
+    default: "Innora | Direct Booking & Ordering Systems for Hotels & Restaurants",
+    template: "%s | Innora",
   },
 
   description:
-    "INNORATECH helps businesses replace manual processes with modern websites, web applications, automation, and integrations.",
+    "Innora builds direct booking and ordering systems for independent hotels and restaurants — so you keep the guest relationship instead of losing it to phone-tag, OTAs, and delivery-app commissions.",
 
-  applicationName: "INNORATECH",
+  applicationName: "Innora",
 
   robots: {
     index: true,
@@ -41,27 +41,27 @@ export const metadata: Metadata = {
 
   openGraph: {
     type: "website",
-    locale: "en_US",
-    siteName: "INNORATECH",
-    title: "INNORATECH | Turn Manual Work Into Digital Solutions",
+    locale: "en_IN",
+    siteName: "Innora",
+    title: "Innora | Stop Losing Bookings to Phone Calls and Commission Fees",
     description:
-      "Modern websites, web applications, business automation, and integrations for growing businesses.",
+      "Direct booking and ordering systems for independent hotels and restaurants, in India and internationally.",
     url: "/",
     images: [
       {
         url: "/og/innoratech-default.png",
         width: 1200,
         height: 630,
-        alt: "INNORATECH — Turn Manual Work Into Digital Solutions",
+        alt: "Innora — Direct booking and ordering systems for hotels and restaurants",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "INNORATECH | Turn Manual Work Into Digital Solutions",
+    title: "Innora | Stop Losing Bookings to Phone Calls and Commission Fees",
     description:
-      "Modern websites, web applications, business automation, and integrations for growing businesses.",
+      "Direct booking and ordering systems for independent hotels and restaurants, in India and internationally.",
     images: ["/og/innoratech-default.png"],
   },
 

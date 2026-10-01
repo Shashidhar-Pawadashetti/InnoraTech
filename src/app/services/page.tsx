@@ -11,14 +11,14 @@ import { services } from "@/data/services";
 export const metadata: Metadata = {
   title: "Core Services",
   description:
-    "Explore INNORATECH's five technical service pillars: Business Websites, Web Applications, Business Automation, API & Integrations, and Deployment & Maintenance.",
+    "Explore Innora's five technical service pillars: Business Websites, Web Applications, Business Automation, API & Integrations, and Deployment & Maintenance.",
   alternates: {
     canonical: "/services",
   },
   openGraph: {
-    title: "Core Services | INNORATECH",
+    title: "Core Services | Innora",
     description:
-      "Explore INNORATECH's five technical service pillars for modern businesses.",
+      "Explore Innora's five technical service pillars for modern businesses.",
     url: "/services",
     images: ["/og/automation.png"],
   },
@@ -128,7 +128,7 @@ export default function ServicesPage() {
           </h3>
 
           <p className="text-sm text-slate-600 max-w-2xl leading-relaxed mb-8">
-            When a boutique hotel partners with INNORATECH, they don&apos;t just receive a standard landing page. We assemble the complete digital machine:
+            When a boutique hotel partners with Innora, they don&apos;t just receive a standard landing page. We assemble the complete digital machine:
           </p>
 
           <div className="flex flex-wrap items-center gap-3">
@@ -204,7 +204,7 @@ export default function ServicesPage() {
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button href="/contact">
-                Contact INNORATECH
+                Contact Innora
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </div>

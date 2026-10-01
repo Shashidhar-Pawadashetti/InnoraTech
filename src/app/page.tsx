@@ -5,27 +5,27 @@ import { SolutionsSection } from "@/components/sections/SolutionsSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
 import { WorkSection } from "@/components/sections/WorkSection";
-import { WhyINNORATECHSection } from "@/components/sections/WhyINNORATECHSection";
+import { WhyInnoraSection } from "@/components/sections/WhyInnoraSection";
 import { CTASection } from "@/components/sections/CTASection";
 import { Reveal } from "@/components/ui/Reveal";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://innoratech.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://innoratech.in";
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "INNORATECH",
+  name: "Innora",
   url: siteUrl,
   logo: `${siteUrl}/brand/logo.svg`,
   description:
-    "INNORATECH helps businesses replace manual processes with modern websites, web applications, automation, and integrations.",
+    "Innora builds direct booking and ordering systems for independent hotels and restaurants, in India and internationally.",
   sameAs: [
-    "https://linkedin.com/company/innoratech",
+    "https://linkedin.com/company/innora-tech",
   ],
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer support",
-    email: "contact@innoratech.com",
+    email: "hello@innoratech.in",
     availableLanguage: ["English", "Hindi"],
   },
 };
@@ -49,7 +49,7 @@ export default function Home() {
         <Reveal><ServicesSection /></Reveal>
         <ProcessSection />
         <Reveal><WorkSection /></Reveal>
-        <Reveal><WhyINNORATECHSection /></Reveal>
+        <Reveal><WhyInnoraSection /></Reveal>
         <Reveal><CTASection /></Reveal>
       </div>
     </>

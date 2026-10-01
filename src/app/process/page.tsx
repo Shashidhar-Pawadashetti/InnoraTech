@@ -9,12 +9,12 @@ import { processSteps } from "@/data/process";
 export const metadata: Metadata = {
   title: "Delivery Process",
   description:
-    "How INNORATECH works: from operational discovery to architecture, design, build, QA, and post-launch support.",
+    "How Innora works: from operational discovery to architecture, design, build, QA, and post-launch support.",
   alternates: {
     canonical: "/process",
   },
   openGraph: {
-    title: "Delivery Process | INNORATECH",
+    title: "Delivery Process | Innora",
     description:
       "Our disciplined 7-step engineering methodology from operational problem to working digital system.",
     url: "/process",

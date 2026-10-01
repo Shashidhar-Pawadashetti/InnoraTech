@@ -5,7 +5,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "INNORATECH Privacy Policy and data governance principles.",
+  description: "Innora Privacy Policy and data governance principles.",
   alternates: {
     canonical: "/privacy-policy",
   },
@@ -23,7 +23,7 @@ export default function PrivacyPolicyPage() {
 
         <div className="prose prose-slate max-w-none space-y-6 text-sm sm:text-base text-slate-600 leading-relaxed">
           <p>
-            At INNORATECH, we value your privacy and are committed to safeguarding
+            At Innora, we value your privacy and are committed to safeguarding
             any business or contact information you share with us.
           </p>
 
@@ -65,7 +65,7 @@ export default function PrivacyPolicyPage() {
           <p>
             If you have questions regarding this privacy policy or wish to request
             the deletion of your inquiry records, please email us at{" "}
-            <strong>contact@innoratech.com</strong>.
+            <strong>hello@innoratech.in</strong>.
           </p>
         </div>
       </Container>

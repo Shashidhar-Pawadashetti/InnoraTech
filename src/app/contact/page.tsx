@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     canonical: "/contact",
   },
   openGraph: {
-    title: "Contact & Project Inquiry | INNORATECH",
+    title: "Contact & Project Inquiry | Innora",
     description:
       "Start a direct discussion with our founding software engineers about digitizing your business workflow.",
     url: "/contact",
@@ -52,7 +52,7 @@ export default function ContactPage() {
                   Direct Founder Consultation
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                  When you reach out to INNORATECH, you speak directly with the engineers
+                  When you reach out to Innora, you speak directly with the engineers
                   who build the software. No junior sales reps, no aggressive scripts.
                 </p>
               </div>
@@ -61,7 +61,7 @@ export default function ContactPage() {
               <div className="space-y-4 pt-4 border-t border-slate-100">
                 {/* Email */}
                 <a
-                  href="mailto:contact@innoratech.com"
+                  href="mailto:hello@innoratech.in"
                   className="flex items-center gap-4 p-4 rounded-xl border border-slate-200 bg-white hover:border-[var(--brand-primary)] transition-all group"
                 >
                   <div className="w-10 h-10 rounded-lg bg-blue-50 text-[var(--brand-primary)] flex items-center justify-center shrink-0">
@@ -72,7 +72,7 @@ export default function ContactPage() {
                       Email
                     </p>
                     <p className="text-sm font-semibold text-slate-900 group-hover:text-[var(--brand-primary)]">
-                      contact@innoratech.com
+                      hello@innoratech.in
                     </p>
                   </div>
                   <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-[var(--brand-primary)] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -101,7 +101,7 @@ export default function ContactPage() {
 
                 {/* LinkedIn */}
                 <a
-                  href="https://linkedin.com/company/innoratech"
+                  href="https://linkedin.com/company/innora-tech"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-4 rounded-xl border border-slate-200 bg-white hover:border-blue-600 transition-all group"
@@ -116,7 +116,7 @@ export default function ContactPage() {
                       LinkedIn
                     </p>
                     <p className="text-sm font-semibold text-slate-900 group-hover:text-blue-700">
-                      INNORATECH Technologies
+                      Innora Tech
                     </p>
                   </div>
                   <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

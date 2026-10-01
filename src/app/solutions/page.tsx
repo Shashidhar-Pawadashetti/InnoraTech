@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     canonical: "/solutions",
   },
   openGraph: {
-    title: "Industry Solutions | INNORATECH",
+    title: "Industry Solutions | Innora",
     description:
       "Digital systems designed specifically for restaurants, hotels, bakeries, and custom business processes.",
     url: "/solutions",
@@ -51,7 +51,7 @@ export default function SolutionsPage() {
         <SectionHeader
           eyebrow="TARGETED INDUSTRY SOLUTIONS"
           title="Designed around your daily workflow"
-          description="Select your industry to see how INNORATECH replaces fragmented manual steps with connected digital systems."
+          description="Select your industry to see how Innora replaces fragmented manual steps with connected digital systems."
         />
 
         <div className="mt-12 grid gap-8 md:grid-cols-2">
@@ -124,7 +124,7 @@ export default function SolutionsPage() {
           </p>
           <div className="mt-8 flex justify-center gap-4">
             <Button href="/contact">
-              Talk to INNORATECH
+              Talk to Innora
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
             <Button href="/services" variant="secondary">

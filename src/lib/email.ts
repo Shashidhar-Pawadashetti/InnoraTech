@@ -41,7 +41,7 @@ export async function sendLeadEmails(lead: LeadEmailData): Promise<void> {
       resend.emails.send({
         from: env.RESEND_FROM_EMAIL,
         to: lead.email,
-        subject: "We received your INNORATECH project enquiry",
+        subject: "We received your Innora project enquiry",
         react: LeadConfirmation(lead),
       }),
     ]);

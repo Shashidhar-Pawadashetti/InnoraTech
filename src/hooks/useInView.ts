@@ -29,8 +29,12 @@ export function useInView<T extends HTMLElement = HTMLDivElement>({
     const node = ref.current;
     if (!node) return;
 
-    // Fail open if IntersectionObserver is unavailable in the browser environment
+    // Fail open if IntersectionObserver is unavailable in the browser environment.
+    // This setState must happen in the effect, not a lazy initializer — environment
+    // detection can only run client-side, and must match the server-rendered `false`
+    // on first paint or React throws a hydration mismatch (see useInView history).
     if (typeof IntersectionObserver === "undefined") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- required for SSR hydration parity, see comment above
       setInView(true);
       return;
     }

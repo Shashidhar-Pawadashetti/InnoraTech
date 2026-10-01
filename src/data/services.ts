@@ -136,7 +136,7 @@ export const services: Service[] = [
       "Technical support",
     ],
     suitableFor: [
-      "Existing INNORATECH clients",
+      "Existing Innora clients",
       "Businesses with existing websites",
       "Businesses with custom web applications",
     ],

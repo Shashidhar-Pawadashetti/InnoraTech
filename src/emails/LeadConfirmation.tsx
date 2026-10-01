@@ -40,7 +40,7 @@ export function LeadConfirmation({
             color: "#0f172a",
           }}
         >
-          Thank you for contacting INNORATECH.
+          Thank you for contacting Innora.
         </h2>
       </div>
 
@@ -82,7 +82,7 @@ export function LeadConfirmation({
         }}
       >
         <p style={{ margin: "0 0 4px 0", fontWeight: "bold", color: "#0f172a" }}>
-          INNORATECH Team
+          Innora Team
         </p>
         <p style={{ margin: "0", fontSize: "12px", color: "#94a3b8" }}>
           Turn Manual Work Into Digital Solutions.

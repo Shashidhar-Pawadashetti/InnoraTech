@@ -9,12 +9,12 @@ import { CTASection } from "@/components/sections/CTASection";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "INNORATECH is a four-member technology agency helping businesses replace manual operations with modern websites, applications, and digital automation.",
+    "Innora is a four-member technology agency helping businesses replace manual operations with modern websites, applications, and digital automation.",
   alternates: {
     canonical: "/about",
   },
   openGraph: {
-    title: "About Us | INNORATECH",
+    title: "About Us | Innora",
     description:
       "A four-member technology agency helping businesses replace manual operations with modern digital systems.",
     url: "/about",
@@ -54,7 +54,7 @@ export default function AboutPage() {
           <SectionHeader
             eyebrow="Who We Are"
             title="Engineers & Problem Solvers Dedicated to Business Digitization"
-            description="INNORATECH is a four-member technology agency based in India and serving clients locally and globally. We build practical digital systems that simplify daily operations and eliminate manual friction."
+            description="Innora is a four-member technology agency based in India and serving clients locally and globally. We build practical digital systems that simplify daily operations and eliminate manual friction."
           />
 
           {/* Mission & Vision */}

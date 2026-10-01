@@ -244,7 +244,7 @@ export function LeadNotification({
           color: "#94a3b8",
         }}
       >
-        Received: {timestamp} via INNORATECH Lead Capture Engine
+        Received: {timestamp} via Innora Lead Capture Engine
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import { services } from "@/data/services";
 import { projects } from "@/data/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://innoratech.com";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://innoratech.in";
   const lastModified = new Date();
 
   const coreRoutes = [

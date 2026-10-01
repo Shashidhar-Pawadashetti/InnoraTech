@@ -12,14 +12,14 @@ import { projects } from "@/data/projects";
 export const metadata: Metadata = {
   title: "Concept Demos & Projects",
   description:
-    "Explore INNORATECH working concept demonstrations across restaurant ordering, hotel reservations, and bakery workflows.",
+    "Explore Innora working concept demonstrations across restaurant ordering, hotel reservations, and bakery workflows.",
   alternates: {
     canonical: "/work",
   },
   openGraph: {
-    title: "Concept Demos & Projects | INNORATECH",
+    title: "Concept Demos & Projects | Innora",
     description:
-      "Explore INNORATECH working concept demonstrations across hospitality and retail workflows.",
+      "Explore Innora working concept demonstrations across hospitality and retail workflows.",
     url: "/work",
     images: ["/og/work-default.png"],
   },
@@ -57,7 +57,7 @@ export default function WorkPage() {
           <div className="flex items-center gap-3 text-xs sm:text-sm text-blue-900">
             <span className="flex h-2 w-2 rounded-full bg-[var(--brand-primary)] shrink-0" />
             <p>
-              <strong>Transparent Agency Notice:</strong> All projects showcased below are functional INNORATECH demonstration prototypes demonstrating our end-to-end technical capabilities.
+              <strong>Transparent Agency Notice:</strong> All projects showcased below are functional Innora demonstration prototypes demonstrating our end-to-end technical capabilities.
             </p>
           </div>
         </Container>

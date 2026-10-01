@@ -25,7 +25,7 @@ export const solutions: Solution[] = [
     shortDescription:
       "Replace paper-based ordering and fragmented ordering channels with connected digital ordering workflows.",
     description:
-      "INNORATECH helps restaurants build direct digital ordering channels, QR table ordering, payment workflows, and restaurant-side order management.",
+      "Innora helps restaurants build direct digital ordering channels, QR table ordering, payment workflows, and restaurant-side order management.",
     problems: [
       "Food orders received through phone calls",
       "Dine-in orders handled using paper and pen",
@@ -76,7 +76,7 @@ export const solutions: Solution[] = [
     shortDescription:
       "Move room booking from fragmented manual conversations toward a structured digital booking workflow.",
     description:
-      "INNORATECH helps hotels build direct booking experiences with room availability, reservations, payments, and hotel-side booking management.",
+      "Innora helps hotels build direct booking experiences with room availability, reservations, payments, and hotel-side booking management.",
     problems: [
       "Room bookings handled through phone calls",
       "Reservations managed through WhatsApp",
@@ -127,7 +127,7 @@ export const solutions: Solution[] = [
     shortDescription:
       "Centralize product orders, custom cake requirements, payments, and production workflows.",
     description:
-      "INNORATECH helps bakeries move custom ordering and routine sales workflows from scattered conversations into structured digital systems.",
+      "Innora helps bakeries move custom ordering and routine sales workflows from scattered conversations into structured digital systems.",
     problems: [
       "Custom cake requirements handled through chat",
       "Manual order tracking",
@@ -178,7 +178,7 @@ export const solutions: Solution[] = [
     shortDescription:
       "Build dashboards, internal tools, workflows, and integrations around your existing business process.",
     description:
-      "When a business has a process that does not fit a standard package, INNORATECH can analyze the workflow and build a custom digital solution.",
+      "When a business has a process that does not fit a standard package, Innora can analyze the workflow and build a custom digital solution.",
     problems: [
       "Repetitive manual data entry",
       "Information spread across spreadsheets and messages",

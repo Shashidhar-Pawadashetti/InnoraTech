@@ -6,7 +6,7 @@ import { SectionHeader } from "@/components/layout/SectionHeader";
 
 const projects = [
   {
-    type: "INNORATECH DEMO",
+    type: "Innora DEMO",
     title: "Restaurant Digital Ordering",
     description:
       "A demonstration system for direct ordering, QR table ordering, and restaurant-side order management.",
@@ -14,7 +14,7 @@ const projects = [
     status: "In development",
   },
   {
-    type: "INNORATECH DEMO",
+    type: "Innora DEMO",
     title: "Hotel Direct Booking",
     description:
       "A demonstration system for room availability, direct booking, payments, and reservation management.",
@@ -22,7 +22,7 @@ const projects = [
     status: "In development",
   },
   {
-    type: "INNORATECH DEMO",
+    type: "Innora DEMO",
     title: "Bakery Order Automation",
     description:
       "A demonstration workflow for e-commerce, custom cake orders, production tracking, and notifications.",

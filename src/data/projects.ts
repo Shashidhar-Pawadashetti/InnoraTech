@@ -21,7 +21,7 @@ export const projects: Project[] = [
   {
     slug: "restaurant-digital-ordering",
     category: "Restaurants",
-    label: "INNORATECH DEMO",
+    label: "Innora DEMO",
     title: "Restaurant Digital Ordering",
     description:
       "A demonstration system for direct online ordering, QR table ordering, and restaurant-side order management.",
@@ -62,7 +62,7 @@ export const projects: Project[] = [
   {
     slug: "hotel-direct-booking",
     category: "Hotels",
-    label: "INNORATECH DEMO",
+    label: "Innora DEMO",
     title: "Hotel Direct Booking",
     description:
       "A demonstration system for direct room booking, payment, and reservation management.",
@@ -103,7 +103,7 @@ export const projects: Project[] = [
   {
     slug: "bakery-order-automation",
     category: "Bakeries",
-    label: "INNORATECH DEMO",
+    label: "Innora DEMO",
     title: "Bakery Order Automation",
     description:
       "A demonstration workflow for online ordering, custom cake requirements, and production tracking.",

@@ -153,7 +153,7 @@ export function LeadForm() {
             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>
           <Button href="/" variant="secondary">
-            Back to INNORATECH
+            Back to Innora
           </Button>
         </div>
 
@@ -367,8 +367,8 @@ export function LeadForm() {
             <p className="font-semibold">{errorMessage}</p>
             <p className="mt-1 text-slate-600">
               You can also email us directly at{" "}
-              <a href="mailto:contact@innoratech.com" className="text-[var(--brand-primary)] underline">
-                contact@innoratech.com
+              <a href="mailto:hello@innoratech.in" className="text-[var(--brand-primary)] underline">
+                hello@innoratech.in
               </a>{" "}
               or message us on WhatsApp.
             </p>

@@ -12,8 +12,8 @@ const envSchema = z.object({
   RESEND_FROM_EMAIL: z
     .string()
     .min(1)
-    .default("INNORATECH <leads@innoratech.com>"),
-  LEADS_TO_EMAIL: z.string().min(1).default("founders@innoratech.com"),
+    .default("Innora <leads@innoratech.in>"),
+  LEADS_TO_EMAIL: z.string().min(1).default("founders@innoratech.in"),
 
   TURNSTILE_SECRET_KEY: z
     .string()

@@ -36,7 +36,7 @@ export function Navbar() {
       <div className="mx-auto flex h-18 max-w-[1280px] items-center justify-between px-5 sm:px-6 lg:px-8">
         <Link
           href="/"
-          aria-label="INNORATECH home"
+          aria-label="Innora home"
           className="shrink-0 flex items-center"
           onClick={() => {
             setOpen(false);
@@ -45,7 +45,7 @@ export function Navbar() {
         >
           <Image
             src="/brand/logo.svg"
-            alt="INNORATECH"
+            alt="Innora"
             width={170}
             height={37}
             priority

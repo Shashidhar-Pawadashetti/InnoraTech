@@ -25,10 +25,10 @@ export function Footer() {
       <div className="mx-auto max-w-[1280px] px-5 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr_1fr]">
           <div>
-            <Link href="/" aria-label="INNORATECH home">
+            <Link href="/" aria-label="Innora home">
               <Image
                 src="/brand/logo-dark.svg"
-                alt="INNORATECH"
+                alt="Innora"
                 width={170}
                 height={37}
                 className="h-8 w-auto"
@@ -36,7 +36,7 @@ export function Footer() {
             </Link>
 
             <p className="mt-5 max-w-md text-sm leading-7 text-slate-300">
-              Turn manual work into digital solutions. INNORATECH helps
+              Turn manual work into digital solutions. Innora helps
               businesses build modern websites, web applications, automation, and
               integrations.
             </p>
@@ -82,7 +82,7 @@ export function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-6 text-sm text-slate-400 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} INNORATECH. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Innora. All rights reserved.</p>
 
           <div className="flex gap-5">
             <Link href="/privacy-policy" className="hover:text-white transition-colors">

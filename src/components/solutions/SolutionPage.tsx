@@ -148,7 +148,7 @@ export function SolutionPage({ solution }: SolutionPageProps) {
         <SectionHeader
           eyebrow="RELATED BUILDING BLOCKS"
           title="Services & demos connected to this solution"
-          description="How INNORATECH combines individual technical capabilities into this industry system."
+          description="How Innora combines individual technical capabilities into this industry system."
         />
 
         <div className="mt-10 grid gap-8 lg:grid-cols-3">

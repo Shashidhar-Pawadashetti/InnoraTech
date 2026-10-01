@@ -44,7 +44,7 @@ export async function generateMetadata({
       canonical: `/solutions/${slug}`,
     },
     openGraph: {
-      title: `${solution.title} | INNORATECH`,
+      title: `${solution.title} | Innora`,
       description: solution.description,
       url: `/solutions/${slug}`,
       images: [
@@ -52,13 +52,13 @@ export async function generateMetadata({
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: `${solution.title} — INNORATECH`,
+          alt: `${solution.title} — Innora`,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${solution.title} | INNORATECH`,
+      title: `${solution.title} | Innora`,
       description: solution.shortDescription,
       images: [ogImage],
     },
